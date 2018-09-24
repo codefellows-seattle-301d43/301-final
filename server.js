@@ -3,9 +3,10 @@
 const express = require('express');
 const ejs = require('ejs');
 
-const PORT = process.env.PORT || 3000;
-console.log(process.env.PORT);
-
+const PORT = process.env.PORT;
+const env = require('dotenv').config();
+const superagent = require('superagent');
+const pg = require('pg');
 const app = express();
 
 app.use(express.json());
