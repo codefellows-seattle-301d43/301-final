@@ -20,7 +20,7 @@ insert schema
 * **GET /** - This route takes you to our index
 * **GET /about** - This route takes us to the about us page
 * **GET /patient/:patientId** - This route will take you a patient's details
-* **GET /patient/:recordId** -  This route will take you to a patient's record details
+* **GET /record/:recordId** -  This route will take you to a patient's record details
 * **GET /patient/:patientId/analyze** - This route will give keywords from all of the patient's records
 * **POST /patient** - Insert a new patient to database and redirect to patient details page and give success message
 * **POST /record** - This route will insert a new record into the database
