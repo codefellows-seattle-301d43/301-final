@@ -3,8 +3,8 @@
 const express = require('express');
 const ejs = require('ejs');
 
-const PORT = process.env.PORT;
 const env = require('dotenv').config();
+const PORT = process.env.PORT;
 const superagent = require('superagent');
 const pg = require('pg');
 const app = express();
