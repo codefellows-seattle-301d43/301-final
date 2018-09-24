@@ -1,0 +1,33 @@
+<%- include('partials/head'); %>
+<%- include('partials/header'); %>
+
+<div class="">
+    <h2>Patient Details:</h2>
+    <p>Last Name, First Name</p>
+</div>
+
+<div class="">
+    <form class="" method="POST" action="/patient/:patientId/analyze">
+        <button>Analyze Keywords</button>
+    </form>
+    <form class="" method="DELETE" action="/patient/:patientId">
+        <button>Delete Patient</button>
+    </form>
+</div>
+
+<div>
+    <h2>Add A New Patient Record</h2>
+    <form class=""  method="POST" action="/record">
+        <label for="">Record Title<input id="" type="text" placeholder="" required></label>
+        <label for="">Description<input id="" type="text" placeholder="" required></label>
+        <label for="">Date<input id="" type="text" placeholder="" required></label>
+        <button>Submit</button>
+    </form>
+</div>
+
+<div>
+    <h2>Patient's Records</h2>
+    <ul>
+        <!-- ejs for loop for (<li><span class="">Date: <%= record.date %></span> <%= record.title %>-->
+    </ul>
+</div>
