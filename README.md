@@ -25,6 +25,7 @@ insert schema
 * **POST /patient** - Insert a new patient to database and redirect to patient details page and give success message
 * **POST /record** - This route will insert a new record into the database
 * **DELETE /patient/:patientId** - This route will delete a patient and their records from the database
+* **DELETE /record/:recordId** - This route will delete a record from the database
 
 >### Credits and Collaborations
 put those here
