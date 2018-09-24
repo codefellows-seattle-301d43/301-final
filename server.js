@@ -13,6 +13,10 @@ app.use(express.static('public'));
 
 app.set('view engine', 'ejs');
 
+// =================================================================================
+// ******************************** GET ROUTES *************************************
+// =================================================================================
+
 //Index
 app.get('/', records.getIndex);
 
@@ -21,6 +25,36 @@ app.get('/about', records.getAbout);
 
 //Get single patient info
 app.get('/patient/:patientId', records.patientInfo);
+
+//Get single record info
+app.get('/record/:recordId', records.recordInfo);
+
+//Analyze by sending a call to Text analysis API
+app.get('/patient/:patientId/analyze', records.analyzeRecord);
+
+
+// =================================================================================
+// ******************************** POST ROUTES ************************************
+// =================================================================================
+
+//New patient
+app.post('/patient', records.newPatient);
+
+//New record
+app.post('/record', records.newRecord);
+
+
+// =================================================================================
+// ******************************* DELETE ROUTES ***********************************
+// =================================================================================
+
+//Delete Patient
+app.delete('/patient/:patientId', records.deletePatient);
+
+
+// =================================================================================
+// ******************************** 404 CATCHER ************************************
+// =================================================================================
 
 //Simple temp 404 catcher
 app.get('*', (req, res) => {
