@@ -4,6 +4,8 @@ const express = require('express');
 const ejs = require('ejs');
 
 const PORT = process.env.PORT || 3000;
+console.log(process.env.PORT);
+
 const app = express();
 
 app.use(express.json());
@@ -12,8 +14,15 @@ app.use(express.static('public'));
 
 app.set('view engine', 'ejs');
 
+//Index
 app.get('/', (req, res) => {
   res.render('index');
+});
+
+//Simple temp 404 catcher
+app.get('*', (req, res) => {
+  res.statusCode = 404;
+  res.send('404, go away');
 });
 
 app.listen(PORT, () => {
