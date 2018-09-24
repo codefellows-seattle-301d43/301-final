@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../partials/head'); %>
+<body>
+  <%- include('../partials/header'); %>\
+  <h1>Key Phrases:</h1>
+  <main>
+      <ul>
+        <% phrases.forEach( phrase => {  %>
+          <li><%= phrase %></li>
+        <% }) %>
+      </ul>
+  </main>
+</body>
+</html>
