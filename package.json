@@ -1,0 +1,28 @@
+{
+  "name": "301-final",
+  "version": "1.0.0",
+  "description": "Code 301 final project",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Code301/301-final.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Code301/301-final/issues"
+  },
+  "homepage": "https://github.com/Code301/301-final#readme",
+  "dependencies": {
+    "dotenv": "^6.0.0",
+    "ejs": "^2.6.1",
+    "express": "^4.16.3",
+    "method-override": "^3.0.0",
+    "pg": "^7.4.3",
+    "superagent": "^4.0.0-beta.5"
+  }
+}
