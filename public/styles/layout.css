@@ -8,7 +8,7 @@ header {
   top: 0;
   left: 0;
   padding: 0 100px;
-  background: #262626;
+  background-color: #262626;
   width: 100%;
   box-sizing: border-box;
 }
@@ -75,6 +75,27 @@ header nav ul li a.active {
   cursor: pointer;
   display: none;
 }
+
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color: #262626;
+  height: 70px;
+  color:  #fff;
+}
+
+.footer-logo {
+  margin-left: 5px;
+  margin-top: 2px;
+}
+
+.social {
+  font-size: 20px;
+  margin-right: 3px;
+}
+
 @media (max-width: 991px) {
   header {
     padding: 0 20px;

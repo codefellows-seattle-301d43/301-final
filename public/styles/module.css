@@ -1,3 +1,18 @@
 i.watermellon {
   color: #E80000;
 }
+
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.site-content {
+  flex: 1;
+}
+
+.show {
+  visibility: hidden;
+  opacity: 0;
+}
