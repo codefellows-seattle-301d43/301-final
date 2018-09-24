@@ -1,0 +1,24 @@
+header {
+  width: 100%;
+}
+nav {
+  display: flex;
+  width: 100%;
+}
+
+ul {
+  display: flex;
+  width: 70%;
+}
+
+section.logo {
+  width: 30%;
+}
+
+section.links {
+  width: 70%;
+}
+
+@media only screen and (min-width: 760px) {
+
+}
