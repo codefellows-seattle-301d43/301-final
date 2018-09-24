@@ -9,5 +9,5 @@ CREATE TABLE IF NOT EXISTS records (
   patient_id INTEGER NOT NULL REFERENCES patient(id) ON DELETE CASCADE,
   title VARCHAR(255) NOT NULL,
   description TEXT NOT NULL, 
-  date DATETIME NOT NULL
+  date DATE NOT NULL
 );
