@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../partials/head'); %>
+<body>
+  <%- include('../partials/header'); %>
+  <main>
+    <section id="details">
+      <span><%= record.date %></span>
+      <h2><%= record.title %></h2>
+      <p><%= record.description %></p>
+    </section>
+    <section>
+      <form method="POST" action="record/delete/<%= record.id %>">
+        <input type="submit" value="Delete"/>
+      </form>
+    </section>
+  </main>
+</body>
+</html>
