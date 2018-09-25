@@ -22,9 +22,11 @@
         </li>
         <% patients.forEach( patient => {  %>
           <li>
+            <a href="/patient/<%= patient.id %>"> 
             <span><%= patient.id %></span>
             <span><%= patient.last_name %></span>
-            <span><%= patient.first_name %></span>
+            <span><%= patient.first_name %></span> 
+            </a>
           </li>
         <% }) %>
       </ul>

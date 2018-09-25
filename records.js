@@ -43,7 +43,7 @@ const patientInfo = (req, res) => {
       console.error(err);
       res.render('pages/error', {message: 'Server Error: We could not handle your request. Sorry!'});
     } else {
-      SQL = 'SELECT id, date, title FROM records WHERE patient_id = $1';
+      SQL = "SELECT id, TO_CHAR(date, 'mon dd, yyyy') AS date, title FROM records WHERE patient_id = $1 ORDER BY id DESC";
       client.query(SQL, values, (err, recordsRes) => {
         if(err){
           console.error(err);
@@ -58,7 +58,7 @@ const patientInfo = (req, res) => {
 
 
 const recordInfo = (req, res) => {
-  let SQL = 'SELECT * FROM records WHERE id = $1';
+  let SQL = "SELECT id, TO_CHAR(date, 'mon dd, yyyy') AS date, title, description FROM records WHERE id = $1";
   let values = [req.params.recordId];
   client.query(SQL, values, (err, serverRes) => {
     if(err){

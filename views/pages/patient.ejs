@@ -34,8 +34,10 @@
         </li>
         <% records.forEach( record => {  %>
             <li>
+                <a href="/record/<%= record.id %>">
                 <span><%= record.date %></span>
                 <span><%= record.title %></span>
+                </a>
             </li>
         <% }) %>
     </ul>
