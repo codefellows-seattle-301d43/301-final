@@ -1,6 +1,8 @@
 <%- include('../partials/head'); %>
 <%- include('../partials/header'); %>
-
+<% if (added) { %>
+    <p>Patient successfully added!</p>
+  <% } %>
 <div class="">
     <h2>Patient Details:</h2>
     <p><%= patient.last_name %>, <%= patient.first_name %></p>
@@ -14,13 +16,12 @@
         <button>Delete Patient</button>
     </form>
 </div>
-
 <div>
     <h2>Add A New Patient Record</h2>
     <form class=""  method="POST" action="/record">
-        <label for="">Record Title<input id="" type="text" placeholder="" required></label>
-        <label for="">Description<input id="" type="text" placeholder="" required></label>
-        <label for="">Date<input id="" type="text" placeholder="" required></label>
+       <input id="" type="hidden" name="patient_id" value="<%= patient.id %>">
+        <label for="">Record Title<input id="" type="text" placeholder="" name="title" required></label>
+        <label for="">Description<input id="" type="text" placeholder="" name="description" required></label>
         <button>Submit</button>
     </form>
 </div>
@@ -34,7 +35,7 @@
         </li>
         <% records.forEach( record => {  %>
             <li>
-                <a href="/record/<%= record.id %>">
+                <a href="/record/<%= patient.id %>/<%= record.id %>">
                 <span><%= record.date %></span>
                 <span><%= record.title %></span>
                 </a>
