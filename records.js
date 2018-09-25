@@ -24,7 +24,6 @@ const getPatients = (req, res) => {
       console.error(err);
       res.redirect('/pages/error');
     }else{
-      console.log(serverRes);
       res.render('index', {patients: serverRes.rows});
     }
   });

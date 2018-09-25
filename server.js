@@ -24,7 +24,7 @@ app.get('/patient', records.getPatients);
 //About us
 app.get('/about', records.getAbout);
 
-//Get single patient info
+//Get single patient info (demographics and records)
 app.get('/patient/:patientId', records.patientInfo);
 
 //Get single record info
