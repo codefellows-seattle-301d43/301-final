@@ -1,13 +1,17 @@
 body {
+  display: flex;
+  flex-direction: column;
   background-color: #f1f1f1;
   font-family: 'Graduate', cursive;
+}
+
+html, body {
+  height: 100%;
 }
 
 header {
   background-color: #2C3539;
 }
-
-
 
 #lab_social_icon_footer a {
   color: #f1f1f1;
@@ -30,7 +34,6 @@ header {
 #lab_social_icon_footer .social {
   -webkit-transform: scale(0.8);
   /* Browser Variations: */
-  
   -moz-transform: scale(0.8);
   -o-transform: scale(0.8);
   -webkit-transition-duration: 0.5s;
@@ -86,3 +89,19 @@ header {
 #patient-list li a:hover:not(.header) {
   background-color: #eee; /* Add a hover effect to all links, except for headers */
 }
+
+.sticky-footer {
+  flex: 1 0 auto;
+  /* Equal to height of footer */
+  /* But also accounting for potential margin-bottom of last child */
+}
+
+.content-inside {
+  padding: 20px;
+  padding-bottom: 50px;
+}
+
+footer {
+  flex-shrink: 0;
+}
+
