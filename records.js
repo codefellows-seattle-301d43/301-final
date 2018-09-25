@@ -13,7 +13,20 @@ const superagent = require('superagent');
 
 const getIndex = (req, res) => {
   console.log('im at index woohoo');
-  res.render('index');
+  res.redirect('/patient');
+};
+
+const getPatients = (req, res) => {
+  let SQL = 'SELECT * FROM patients';
+  client.query(SQL, (err, serverRes) => {
+    if(err){
+      console.error(err);
+      res.redirect('/pages/error');
+    }else{
+      console.log(serverRes);
+      res.render('index', {patients: serverRes.rows});
+    }
+  });
 };
 
 const getAbout = (req, res) => {
@@ -25,15 +38,13 @@ const patientInfo = (req, res) => {
 };
 
 const recordInfo = (req, res) => {
-  console.log('record time, be chillio');
   let SQL = 'SELECT * FROM records WHERE id = $1';
   let values = [req.params.recordId];
   client.query(SQL, values, (err, serverRes) => {
     if(err){
       console.error(err);
-      serverRes.redirect('/pages/error');
+      res.redirect('/pages/error');
     }else{
-      console.log(serverRes.rows[0]);
       res.render('pages/recordDetail', {record: serverRes.rows[0]});
     }
   });
@@ -58,6 +69,7 @@ const deletePatient = (req, res) => {
 
 module.exports = {
   getIndex: getIndex,
+  getPatients: getPatients,
   getAbout: getAbout,
   patientInfo: patientInfo,
   recordInfo: recordInfo,
