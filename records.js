@@ -88,6 +88,7 @@ const recordInfo = (req, res) => {
 
 const analyzeRecord = (req, res) => {
   let SQL = 'SELECT id, title, description FROM records WHERE patient_id = $1;';
+  console.log(req.body.lastName, req.body.firstName);
   let values = [req.params.patientId];
   client.query(SQL, values, (err, apiResponse) => {
     if(err) {
@@ -115,7 +116,7 @@ const analyzeRecord = (req, res) => {
           //   filterList.push(symptom);
           //   return !filterList.includes(symptom);
           // }));
-          
+
           let allPhrasesFromRecords = phraseList.reduce((total,phraseList) => total.concat(phraseList.keyPhrases),[]);
           let allPhrasesSet = new Set(allPhrasesFromRecords);
 

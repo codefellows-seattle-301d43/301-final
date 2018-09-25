@@ -15,6 +15,8 @@
 
 <div class="">
     <form class="" method="POST" action="/patient/<%= patient.id %>/analyze">
+        <input type="hidden" name="lastName" value="<%= patient.last_name %>">
+        <input type="hidden" name="firstName" value="<%= patient.first_name %>">
         <button>Analyze Keywords</button>
     </form>
     <form id="delete" action="/patient/<%= patient.id %>" method="POST" >
