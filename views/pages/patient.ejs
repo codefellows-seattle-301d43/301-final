@@ -28,6 +28,12 @@
 <div>
     <h2>Patient's Records</h2>
     <ul>
-        <!-- ejs for loop for (<li><span class="">Date: <%= record.date %></span> <%= record.title %>-->
+        <% records.forEach( record => {  %>
+            <li>
+                <span><%= patient.id %></span>
+                <span><%= patient.last_name %></span>
+                <span><%= patient.first_name %></span>
+            </li>
+        <% }) %>
     </ul>
 </div>
