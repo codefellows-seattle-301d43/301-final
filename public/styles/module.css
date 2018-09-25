@@ -27,6 +27,10 @@ body {
   color: #E80000; 
 }
 
+input.input {
+  background-color: white;
+}
+
 @import url(https://fonts.googleapis.com/css?family=Lato:100,300,400);
 
 input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
@@ -170,4 +174,13 @@ input:hover:focus::-ms-placeholder, textarea:hover::focus:-ms-placeholder {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.search-width {
+  width: 90% !important;
+}
+
+#myInput {
+  height: 30px;
+  border: 1px solid #b3aca7;
 }
