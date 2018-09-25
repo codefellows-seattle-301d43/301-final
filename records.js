@@ -65,7 +65,7 @@ const recordInfo = (req, res) => {
       console.error(err);
       res.render('pages/error', {message: 'Server Error: We could not handle your request. Sorry!'});
     }else{
-      res.render('pages/recordDetail', {record: serverRes.rows[0]});
+      res.render('pages/recordDetail', {record: serverRes.rows[0], added: !!req.query.added});
     }
   });
 };
@@ -77,7 +77,6 @@ const analyzeRecord = (req, res) => {
 
 
 const newPatient = (req, res) => {
-  console.log('im new patient take it easy');
   let SQL = 'INSERT INTO patients (first_name, last_name) VALUES ($1,$2) ON CONFLICT DO NOTHING RETURNING id';
   let values = [req.body.first_name, req.body.last_name];
   client.query(SQL, values, (err, serverRes) => {
@@ -87,12 +86,22 @@ const newPatient = (req, res) => {
     }else{
       res.redirect(`/patient/${serverRes.rows[0].id}?added=true`);
     }
-  })
+  });
 };
 
 
 const newRecord = (req, res) => {
   console.log('new record, plz no big bills');
+  let SQL = 'INSERT INTO records (patient_id, title, description) VALUES ($1, $2, $3) ON CONFLICT DO NOTHING RETURNING id';
+  let values = [req.body.patient_id, req.body.title, req.body.description];
+  client.query(SQL, values, (err, serverRes) => {
+    if(err){
+      console.error(err);
+      res.render('pages/error', {message: 'Server Error: We could not handle your request. Sorry!'});
+    }else{
+      res.redirect(`/record/${serverRes.rows[0].id}?added=true`);
+    }
+  });
 };
 
 

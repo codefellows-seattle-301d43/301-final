@@ -3,6 +3,9 @@
 <%- include('../partials/head'); %>
 <body>
   <%- include('../partials/header'); %>
+  <% if (added) { %>
+    <p>Record successfully added!</p>
+  <% } %>
   <main>
     <section id="details">
       <span><%= record.date %></span>
