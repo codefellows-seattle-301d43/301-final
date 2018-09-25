@@ -1,9 +1,9 @@
-<%- include('partials/head'); %>
-<%- include('partials/header'); %>
+<%- include('../partials/head'); %>
+<%- include('../partials/header'); %>
 
 <div class="">
     <h2>Patient Details:</h2>
-    <p>Last Name, First Name</p>
+    <p><%= patient.last_name %>, <%= patient.first_name %></p>
 </div>
 
 <div class="">
@@ -28,12 +28,17 @@
 <div>
     <h2>Patient's Records</h2>
     <ul>
+        <li>
+            <span>DATE</span>
+            <span>TITLE</span>
+        </li>
         <% records.forEach( record => {  %>
             <li>
-                <span><%= patient.id %></span>
-                <span><%= patient.last_name %></span>
-                <span><%= patient.first_name %></span>
+                <span><%= record.date %></span>
+                <span><%= record.title %></span>
             </li>
         <% }) %>
     </ul>
 </div>
+
+<%- include('../partials/footer'); %>

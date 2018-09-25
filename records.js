@@ -37,6 +37,27 @@ const getAbout = (req, res) => {
 
 const patientInfo = (req, res) => {
   console.log('hi i am a patient, fear me');
+  let SQL = 'SELECT * FROM patients WHERE id = $1';
+  let values = [req.params.patientId];
+
+  client.query(SQL, values, (err, patientRes) => {
+    if(err){
+      console.error(err);
+      res.render('pages/error', {message: 'Server Error: We could not handle your request. Sorry!'});
+    } else {
+      SQL = 'SELECT id, date, title FROM records WHERE patient_id = $1';
+      client.query(SQL, values, (err, recordsRes) => {
+        if(err){
+          console.error(err);
+          res.render('pages/error', {message: 'Server Error: We could not handle your request. Sorry!'});
+        } else {
+          console.log(recordsRes);
+          res.render('pages/patient', {patient: patientRes.rows[0], records: recordsRes.rows});
+        }
+      });
+    }
+  });
+
 };
 
 
