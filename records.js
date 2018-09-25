@@ -117,7 +117,8 @@ const analyzeRecord = (req, res) => {
           // }));
           
           let allPhrasesFromRecords = phraseList.reduce((total,phraseList) => total.concat(phraseList.keyPhrases),[]);
-          res.render('pages/keyPhrases', {phrases: allPhrasesFromRecords});
+          let allPhrasesSet = new Set(allPhrasesFromRecords);
+          res.render('pages/keyPhrases', {phrases: allPhrasesSet});
         });
     }
   });
