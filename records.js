@@ -16,6 +16,7 @@ const getIndex = (req, res) => {
   res.redirect('/patient');
 };
 
+
 const getPatients = (req, res) => {
   let SQL = 'SELECT * FROM patients';
   client.query(SQL, (err, serverRes) => {
@@ -29,13 +30,16 @@ const getPatients = (req, res) => {
   });
 };
 
+
 const getAbout = (req, res) => {
   console.log('about us, boring..');
 };
 
+
 const patientInfo = (req, res) => {
   console.log('hi i am a patient, fear me');
 };
+
 
 const recordInfo = (req, res) => {
   let SQL = 'SELECT * FROM records WHERE id = $1';
@@ -50,17 +54,21 @@ const recordInfo = (req, res) => {
   });
 };
 
+
 const analyzeRecord = (req, res) => {
   console.log('magic gon happen');
 };
+
 
 const newPatient = (req, res) => {
   console.log('im new patient take it easy');
 };
 
+
 const newRecord = (req, res) => {
   console.log('new record, plz no big bills');
 };
+
 
 const deletePatient = (req, res) => {
   console.log('DEL.... bai have a good time');
