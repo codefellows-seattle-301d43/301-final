@@ -106,7 +106,16 @@ const newRecord = (req, res) => {
 
 
 const deletePatient = (req, res) => {
-  console.log('DEL.... bai have a good time');
+  let SQL = 'DELETE FROM patients WHERE id = $1';
+  let values = [req.params.patientId];
+  client.query(SQL, values, (err, serverRes) => {
+    if(err){
+      console.error(err);
+      res.render('pages/error', {message: 'Server Error: We could not handle your request. Sorry!'});
+    }else{
+      res.redirect('/patient');
+    }
+  });
 };
 
 
