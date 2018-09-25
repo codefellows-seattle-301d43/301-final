@@ -2,7 +2,10 @@
 
 const pg = require('pg');
 require('dotenv').config();
+
 const conString = process.env.DATABASE_URL;
+const authKey = process.env.KEY;
+
 const client = new pg.Client(conString);
 
 client.connect();
@@ -24,7 +27,10 @@ const getPatients = (req, res) => {
       console.error(err);
       res.render('pages/error', {message: 'Server Error: We could not handle your request. Sorry!'});
     }else{
-      res.render('index', {patients: serverRes.rows});
+      res.render('index', {
+        patients: serverRes.rows,
+        deleted: !!req.query.deleted
+      });
     }
   });
 };
@@ -49,7 +55,12 @@ const patientInfo = (req, res) => {
           console.error(err);
           res.render('pages/error', {message: 'Server Error: We could not handle your request. Sorry!'});
         } else {
-          res.render('pages/patient', {patient: patientRes.rows[0], records: recordsRes.rows, added: !!req.query.added});
+          res.render('pages/patient', {
+            patient: patientRes.rows[0],
+            records: recordsRes.rows,
+            added: !!req.query.added,
+            deleted: !!req.query.deleted
+          });
         }
       });
     }
@@ -65,14 +76,51 @@ const recordInfo = (req, res) => {
       console.error(err);
       res.render('pages/error', {message: 'Server Error: We could not handle your request. Sorry!'});
     }else{
-      res.render('pages/recordDetail', {record: serverRes.rows[0], added: !!req.query.added, patient_id: req.params.patientId});
+      res.render('pages/recordDetail', {
+        record: serverRes.rows[0],
+        added: !!req.query.added,
+        patient_id: req.params.patientId
+      });
     }
   });
 };
 
 
 const analyzeRecord = (req, res) => {
-  console.log('magic gon happen');
+  let SQL = 'SELECT id, title, description FROM records WHERE patient_id = $1;';
+  let values = [req.params.patientId];
+  client.query(SQL, values, (err, apiResponse) => {
+    if(err) {
+      console.log(err);
+      res.render('pages/error', {message: 'poop'});
+    } else {
+      let analysisData = apiResponse.rows.map(data => {
+        return {language: 'en', id: data.id, text: `${data.title} ${data.description}` };
+      });
+
+      let reqData = {documents: analysisData };
+
+      superagent.post('https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/keyPhrases')
+        .set('Ocp-Apim-Subscription-Key', authKey)
+        .set('Accept', 'application/json')
+        .set('Content-Type', 'application/json')
+        .send(reqData)
+        .then(responseData => {
+          let phraseList = JSON.parse(responseData.text).documents;
+
+          // **** !!!DO NOT DELETE!!! Slow filter, will optimize later. !!!DO NOT DELETE!!! ****
+          //
+          // let filterList = ['day', 'week', 'days', 'weeks', 'month', 'months', 'year', 'years'];
+          // phraseList.map(data => data.keyPhrases.filter(symptom => {
+          //   filterList.push(symptom);
+          //   return !filterList.includes(symptom);
+          // }));
+          
+          let allPhrasesFromRecords = phraseList.reduce((total,phraseList) => total.concat(phraseList.keyPhrases),[]);
+          res.render('pages/keyPhrases', {phrases: allPhrasesFromRecords});
+        });
+    }
+  });
 };
 
 
@@ -106,7 +154,29 @@ const newRecord = (req, res) => {
 
 
 const deletePatient = (req, res) => {
-  console.log('DEL.... bai have a good time');
+  let SQL = 'DELETE FROM patients WHERE id = $1';
+  let values = [req.params.patientId];
+  client.query(SQL, values, (err, serverRes) => {
+    if(err){
+      console.error(err);
+      res.render('pages/error', {message: 'Server Error: We could not handle your request. Sorry!'});
+    }else{
+      res.redirect('/patient?deleted=true');
+    }
+  });
+};
+
+const deleteRecord = (req, res) => {
+  let SQL = 'DELETE FROM records WHERE id = $1';
+  let values = [req.params.recordId];
+  client.query(SQL, values, (err, serverRes) => {
+    if(err){
+      console.error(err);
+      res.render('pages/error', {message: 'Server Error: We could not handle your request. Sorry!'});
+    }else{
+      res.redirect(`/patient/${req.body.patientId}?deleted=true`);
+    }
+  });
 };
 
 
@@ -119,5 +189,6 @@ module.exports = {
   analyzeRecord: analyzeRecord,
   newPatient: newPatient,
   newRecord: newRecord,
-  deletePatient: deletePatient
+  deletePatient: deletePatient,
+  deleteRecord: deleteRecord
 };
