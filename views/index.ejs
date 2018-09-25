@@ -9,11 +9,14 @@
     <div class="form-container">
       <div class="page-header">
         <h2>Add A New Patient</h2>
-        <form class="form"  method="POST" action="/patient">
-            <p><label for="fname">First Name<input id="fname" class="username input" type="text" placeholder="" name="first_name" required></label></p>
-            <p><label for="lname">Last Name<input id="lname" type="text" class="lastname input" placeholder="" name="last_name" required></label></p>
-            <button>Submit</button>
-        </form>
+      </div>
+      <form class="form" method="POST" action="/patient">
+        <div class="inputs-form">
+          <p><input class="username input" type="text" placeholder="First Name" required></p>
+          <p><input class="lastname input" type="text" placeholder="Last Name" required></p>
+          <button class="submit">Submit</button>
+        </div>
+      </form>
     </div>
     
     <div class="under-form">
