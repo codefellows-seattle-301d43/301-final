@@ -60,7 +60,7 @@ app.delete('/patient/:patientId', records.deletePatient);
 //Simple temp 404 catcher
 app.get('*', (req, res) => {
   res.statusCode = 404;
-  res.send('404, go away');
+  res.render('pages/error', {message: '404: We can\'t find what you requested'});
 });
 
 app.listen(PORT, () => {

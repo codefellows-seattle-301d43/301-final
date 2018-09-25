@@ -22,7 +22,7 @@ const getPatients = (req, res) => {
   client.query(SQL, (err, serverRes) => {
     if(err){
       console.error(err);
-      res.redirect('/pages/error');
+      res.render('pages/error', {message: 'Server Error: We could not handle your request. Sorry!'});
     }else{
       res.render('index', {patients: serverRes.rows});
     }
@@ -46,7 +46,7 @@ const recordInfo = (req, res) => {
   client.query(SQL, values, (err, serverRes) => {
     if(err){
       console.error(err);
-      res.redirect('/pages/error');
+      res.render('pages/error', {message: 'Server Error: We could not handle your request. Sorry!'});
     }else{
       res.render('pages/recordDetail', {record: serverRes.rows[0]});
     }
