@@ -76,6 +76,10 @@ header nav ul li a.active {
   display: none;
 }
 
+div.menu-toggle-two {
+  display: none;
+}
+
 footer {
   display: flex;
   justify-content: center;
@@ -95,6 +99,7 @@ footer {
   font-size: 20px;
   margin-right: 3px;
 }
+
 
 @media (max-width: 991px) {
   header {
@@ -130,3 +135,4 @@ footer {
     width: 100%;
   }
 }
+
