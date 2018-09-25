@@ -75,9 +75,8 @@ const recordInfo = (req, res) => {
 
 
 const analyzeRecord = (req, res) => {
-  console.log('magic gon happen');
   let SQL = 'SELECT title, description FROM records WHERE patient_id = $1;';
-  let values = [1];
+  let values = [req.params.patientId];
   client.query(SQL, values, (err, apiResponse) => {
     if(err) {
       console.log(err);
