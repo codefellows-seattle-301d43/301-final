@@ -2,7 +2,10 @@
 
 const pg = require('pg');
 require('dotenv').config();
+
 const conString = process.env.DATABASE_URL;
+const authKey = process.env.KEY;
+
 const client = new pg.Client(conString);
 
 client.connect();
@@ -83,7 +86,40 @@ const recordInfo = (req, res) => {
 
 
 const analyzeRecord = (req, res) => {
-  console.log('magic gon happen');
+  let SQL = 'SELECT id, title, description FROM records WHERE patient_id = $1;';
+  let values = [req.params.patientId];
+  client.query(SQL, values, (err, apiResponse) => {
+    if(err) {
+      console.log(err);
+      res.render('pages/error', {message: 'poop'});
+    } else {
+      let analysisData = apiResponse.rows.map(data => {
+        return {language: 'en', id: data.id, text: `${data.title} ${data.description}` };
+      });
+
+      let reqData = {documents: analysisData };
+
+      superagent.post('https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/keyPhrases')
+        .set('Ocp-Apim-Subscription-Key', authKey)
+        .set('Accept', 'application/json')
+        .set('Content-Type', 'application/json')
+        .send(reqData)
+        .then(responseData => {
+          let phraseList = JSON.parse(responseData.text).documents;
+
+          // **** !!!DO NOT DELETE!!! Slow filter, will optimize later. !!!DO NOT DELETE!!! ****
+          //
+          // let filterList = ['day', 'week', 'days', 'weeks', 'month', 'months', 'year', 'years'];
+          // phraseList.map(data => data.keyPhrases.filter(symptom => {
+          //   filterList.push(symptom);
+          //   return !filterList.includes(symptom);
+          // }));
+          
+          let allPhrasesFromRecords = phraseList.reduce((total,phraseList) => total.concat(phraseList.keyPhrases),[]);
+          res.render('pages/keyPhrases', {phrases: allPhrasesFromRecords});
+        });
+    }
+  });
 };
 
 
