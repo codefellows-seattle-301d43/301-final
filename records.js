@@ -84,17 +84,19 @@ const analyzeRecord = (req, res) => {
       res.render('pages/error', {message: 'poop'});
     } else {
       let reqData = apiResponse.rows.map((data, i) => {
-        return {language: 'en', id: i + 1, text: data.title + data.description };
+        return {language: 'en', id: i + 1, text: `${data.title} ${data.description}` };
       });
-      // JSON.stringify(reqData);
-      console.log(reqData);
+
+      let dat = {documents: reqData };
+
       superagent.post('https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/keyPhrases')
+        .set('Ocp-Apim-Subscription-Key', authKey)
         .set('Accept', 'application/json')
         .set('Content-Type', 'application/json')
-        .set('Ocp-Apim-Subscription-Key', authKey)
-        .send(JSON.stringify(reqData))
-        .end(res => {
-          console.log('Microsoft says:', res);
+        .send(dat)
+        .then(res => {
+          console.log(JSON.parse(res.text));
+          console.log(JSON.parse(res.text).documents[0].keyPhrases);
         });
 
       res.send('werk');
