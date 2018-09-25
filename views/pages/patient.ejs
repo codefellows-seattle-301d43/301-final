@@ -1,6 +1,8 @@
 <%- include('../partials/head'); %>
 <%- include('../partials/header'); %>
-
+<% if (added) { %>
+    <p>Patient successfully added!</p>
+  <% } %>
 <div class="">
     <h2>Patient Details:</h2>
     <p><%= patient.last_name %>, <%= patient.first_name %></p>
