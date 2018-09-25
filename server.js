@@ -39,13 +39,13 @@ app.get('/patient/:patientId', records.patientInfo);
 //Get single record info
 app.get('/record/:patientId/:recordId', records.recordInfo);
 
-//Analyze by sending a call to Text analysis API
-app.get('/patient/:patientId/analyze', records.analyzeRecord);
-
 
 // =================================================================================
 // ******************************** POST ROUTES ************************************
 // =================================================================================
+
+//Analyze by sending a call to Text analysis API
+app.post('/patient/:patientId/analyze', records.analyzeRecord);
 
 //New patient
 app.post('/patient', records.newPatient);

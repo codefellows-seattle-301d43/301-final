@@ -14,7 +14,7 @@
 </div>
 
 <div class="">
-    <form class="" method="POST" action="/patient/:patientId/analyze">
+    <form class="" method="POST" action="/patient/<%= patient.id %>/analyze">
         <button>Analyze Keywords</button>
     </form>
     <form id="delete" action="/patient/<%= patient.id %>" method="POST" >
