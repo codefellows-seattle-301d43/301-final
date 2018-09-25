@@ -118,6 +118,15 @@ const analyzeRecord = (req, res) => {
           
           let allPhrasesFromRecords = phraseList.reduce((total,phraseList) => total.concat(phraseList.keyPhrases),[]);
           let allPhrasesSet = new Set(allPhrasesFromRecords);
+
+          //Print out all repeated words
+          let allPhrases = new Array(allPhrasesSet);
+          allPhrases.map((phrase) => {
+            
+          })
+
+
+
           res.render('pages/keyPhrases', {phrases: allPhrasesSet});
         });
     }
