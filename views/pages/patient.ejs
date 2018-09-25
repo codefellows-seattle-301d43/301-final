@@ -16,7 +16,6 @@
         <button>Delete Patient</button>
     </form>
 </div>
-
 <div>
     <h2>Add A New Patient Record</h2>
     <form class=""  method="POST" action="/record">
@@ -36,7 +35,7 @@
         </li>
         <% records.forEach( record => {  %>
             <li>
-                <a href="/record/<%= record.id %>">
+                <a href="/record/<%= patient.id %>/<%= record.id %>">
                 <span><%= record.date %></span>
                 <span><%= record.title %></span>
                 </a>

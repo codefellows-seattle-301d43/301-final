@@ -65,7 +65,7 @@ const recordInfo = (req, res) => {
       console.error(err);
       res.render('pages/error', {message: 'Server Error: We could not handle your request. Sorry!'});
     }else{
-      res.render('pages/recordDetail', {record: serverRes.rows[0], added: !!req.query.added});
+      res.render('pages/recordDetail', {record: serverRes.rows[0], added: !!req.query.added, patient_id: req.params.patientId});
     }
   });
 };
@@ -99,7 +99,7 @@ const newRecord = (req, res) => {
       console.error(err);
       res.render('pages/error', {message: 'Server Error: We could not handle your request. Sorry!'});
     }else{
-      res.redirect(`/record/${serverRes.rows[0].id}?added=true`);
+      res.redirect(`/record/${req.body.patient_id}/${serverRes.rows[0].id}?added=true`);
     }
   });
 };
