@@ -2,6 +2,7 @@
 
 const records = require('./records');
 const express = require('express');
+const methodOverride = require('method-override');
 const ejs = require('ejs');
 
 const PORT = process.env.PORT;
@@ -10,6 +11,15 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
+
+app.use(methodOverride(function (req, res) {
+  if (req.body && typeof req.body === 'object' && '_method' in req.body) {
+    // look in urlencoded POST bodies and delete it
+    var method = req.body._method;
+    delete req.body._method;
+    return method;
+  }
+}));
 
 app.set('view engine', 'ejs');
 
@@ -28,7 +38,7 @@ app.get('/about', records.getAbout);
 app.get('/patient/:patientId', records.patientInfo);
 
 //Get single record info
-app.get('/record/:recordId', records.recordInfo);
+app.get('/record/:patientId/:recordId', records.recordInfo);
 
 
 // =================================================================================

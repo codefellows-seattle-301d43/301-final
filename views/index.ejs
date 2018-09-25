@@ -1,20 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-  <%- include('partials/head'); %>
+<%- include('partials/head'); %>
+
 <body>
   <%- include('partials/header'); %>
   <main class="site-content">
-    <div>
+
+    <div class="form-container">
+      <div class="page-header">
         <h2>Add A New Patient</h2>
-        <form class=""  method="POST" action="/patient">
-            <label for="">First Name<input id="" type="text" placeholder="" required></label>
-            <label for="">Last Name<input id="" type="text" placeholder="" required></label>
+        <form class="form"  method="POST" action="/patient">
+            <p><label for="fname">First Name<input id="fname" class="username input" type="text" placeholder="" name="first_name" required></label></p>
+            <p><label for="lname">Last Name<input id="lname" type="text" class="lastname input" placeholder="" name="last_name" required></label></p>
             <button>Submit</button>
         </form>
     </div>
-    <div>
+    
+    <div class="under-form">
+      <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for patient names..">
       <h2>Patients</h2>
-      <ul>          
+      <ul id="patient-list">
         <li>
           <span>ID</span>
           <span>Last</span>
@@ -33,8 +38,9 @@
           </form>
         <% }) %>
       </ul>
-  </div>
-  </main>  
+    </div>    
+  </main>
   <%- include('partials/footer'); %>
 </body>
+
 </html>

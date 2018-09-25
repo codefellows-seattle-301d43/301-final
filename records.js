@@ -52,7 +52,7 @@ const patientInfo = (req, res) => {
           console.error(err);
           res.render('pages/error', {message: 'Server Error: We could not handle your request. Sorry!'});
         } else {
-          res.render('pages/patient', {patient: patientRes.rows[0], records: recordsRes.rows});
+          res.render('pages/patient', {patient: patientRes.rows[0], records: recordsRes.rows, added: !!req.query.added});
         }
       });
     }
@@ -68,7 +68,7 @@ const recordInfo = (req, res) => {
       console.error(err);
       res.render('pages/error', {message: 'Server Error: We could not handle your request. Sorry!'});
     }else{
-      res.render('pages/recordDetail', {record: serverRes.rows[0]});
+      res.render('pages/recordDetail', {record: serverRes.rows[0], added: !!req.query.added, patient_id: req.params.patientId});
     }
   });
 };
@@ -108,17 +108,45 @@ const analyzeRecord = (req, res) => {
 
 
 const newPatient = (req, res) => {
-  console.log('im new patient take it easy');
+  let SQL = 'INSERT INTO patients (first_name, last_name) VALUES ($1,$2) ON CONFLICT DO NOTHING RETURNING id';
+  let values = [req.body.first_name, req.body.last_name];
+  client.query(SQL, values, (err, serverRes) => {
+    if(err){
+      console.error(err);
+      res.render('pages/error', {message: 'Server Error: We could not handle your request. Sorry!'});
+    }else{
+      res.redirect(`/patient/${serverRes.rows[0].id}?added=true`);
+    }
+  });
 };
 
 
 const newRecord = (req, res) => {
   console.log('new record, plz no big bills');
+  let SQL = 'INSERT INTO records (patient_id, title, description) VALUES ($1, $2, $3) ON CONFLICT DO NOTHING RETURNING id';
+  let values = [req.body.patient_id, req.body.title, req.body.description];
+  client.query(SQL, values, (err, serverRes) => {
+    if(err){
+      console.error(err);
+      res.render('pages/error', {message: 'Server Error: We could not handle your request. Sorry!'});
+    }else{
+      res.redirect(`/record/${req.body.patient_id}/${serverRes.rows[0].id}?added=true`);
+    }
+  });
 };
 
 
 const deletePatient = (req, res) => {
-  console.log('DEL.... bai have a good time');
+  let SQL = 'DELETE FROM patients WHERE id = $1';
+  let values = [req.params.patientId];
+  client.query(SQL, values, (err, serverRes) => {
+    if(err){
+      console.error(err);
+      res.render('pages/error', {message: 'Server Error: We could not handle your request. Sorry!'});
+    }else{
+      res.redirect('/patient');
+    }
+  });
 };
 
 
