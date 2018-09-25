@@ -17,6 +17,9 @@
     </div>
     
     <div class="under-form">
+        <% if (deleted) { %>
+          <p> Patient successfully deleted!</p>
+        <% } %>
       <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for patient names..">
       <h2>Patients</h2>
       <ul id="patient-list">
