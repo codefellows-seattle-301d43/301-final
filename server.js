@@ -61,6 +61,9 @@ app.post('/record', records.newRecord);
 //Delete Patient
 app.delete('/patient/:patientId', records.deletePatient);
 
+//Delete Record
+app.delete('/record/:recordId', records.deleteRecord);
+
 
 // =================================================================================
 // ******************************** 404 CATCHER ************************************

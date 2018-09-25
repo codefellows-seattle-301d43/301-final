@@ -129,6 +129,19 @@ const deletePatient = (req, res) => {
   });
 };
 
+const deleteRecord = (req, res) => {
+  let SQL = 'DELETE FROM records WHERE id = $1';
+  let values = [req.params.recordId];
+  client.query(SQL, values, (err, serverRes) => {
+    if(err){
+      console.error(err);
+      res.render('pages/error', {message: 'Server Error: We could not handle your request. Sorry!'});
+    }else{
+      res.redirect(`/patient/${req.body.patientId}`);
+    }
+  });
+};
+
 
 module.exports = {
   getIndex: getIndex,
@@ -139,5 +152,6 @@ module.exports = {
   analyzeRecord: analyzeRecord,
   newPatient: newPatient,
   newRecord: newRecord,
-  deletePatient: deletePatient
+  deletePatient: deletePatient,
+  deleteRecord: deleteRecord
 };
