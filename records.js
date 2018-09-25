@@ -2,7 +2,10 @@
 
 const pg = require('pg');
 require('dotenv').config();
+
 const conString = process.env.DATABASE_URL;
+const authKey = process.env.KEY;
+
 const client = new pg.Client(conString);
 
 client.connect();
@@ -56,14 +59,28 @@ const recordInfo = (req, res) => {
 
 const analyzeRecord = (req, res) => {
   console.log('magic gon happen');
-  let SQL = 'SELECT * FROM records WHERE patient_id = $1;';
+  let SQL = 'SELECT title, description FROM records WHERE patient_id = $1;';
   let values = [1];
   client.query(SQL, values, (err, apiResponse) => {
     if(err) {
       console.log(err);
       res.render('pages/error', {message: 'poop'});
     } else {
-      console.log(apiResponse.rows);
+      let reqData = apiResponse.rows.map((data, i) => {
+        return {language: 'en', id: i + 1, text: data.title + data.description };
+      });
+      // JSON.stringify(reqData);
+      console.log(reqData);
+      superagent.post('https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/keyPhrases')
+        .set('Accept', 'application/json')
+        .set('Content-Type', 'application/json')
+        .set('Ocp-Apim-Subscription-Key', authKey)
+        .send(JSON.stringify(reqData))
+        .end(res => {
+          console.log('Microsoft says:', res);
+        });
+
+      res.send('werk');
     }
   });
 };
