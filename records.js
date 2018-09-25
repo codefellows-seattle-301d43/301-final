@@ -56,6 +56,7 @@ const patientInfo = (req, res) => {
             patient: patientRes.rows[0],
             records: recordsRes.rows,
             added: !!req.query.added,
+            deleted: !!req.query.deleted
           });
         }
       });
@@ -137,7 +138,7 @@ const deleteRecord = (req, res) => {
       console.error(err);
       res.render('pages/error', {message: 'Server Error: We could not handle your request. Sorry!'});
     }else{
-      res.redirect(`/patient/${req.body.patientId}`);
+      res.redirect(`/patient/${req.body.patientId}?deleted=true`);
     }
   });
 };
