@@ -3,16 +3,6 @@ body {
   padding: 0;
 }
 
-header {
-  position: absolute;
-  top: 0;
-  left: 0;
-  padding: 0 100px;
-  background-color: #262626;
-  width: 100%;
-  box-sizing: border-box;
-}
-
 header .logo {
   color: #fff;
   height: 50px;
@@ -85,7 +75,7 @@ footer {
   justify-content: center;
   align-items: center;
   width: 100%;
-  background-color: #262626;
+  background-color: #2C3539;
   height: 50px;
   color:  #fff;
 }
