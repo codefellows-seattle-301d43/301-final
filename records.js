@@ -56,7 +56,16 @@ const recordInfo = (req, res) => {
 
 const analyzeRecord = (req, res) => {
   console.log('magic gon happen');
-
+  let SQL = 'SELECT * FROM records WHERE patient_id = $1;';
+  let values = [1];
+  client.query(SQL, values, (err, apiResponse) => {
+    if(err) {
+      console.log(err);
+      res.render('pages/error', {message: 'poop'});
+    } else {
+      console.log(apiResponse.rows);
+    }
+  });
 };
 
 
