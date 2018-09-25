@@ -16,3 +16,9 @@ body {
   visibility: hidden;
   opacity: 0;
 }
+
+#patient-list {
+  text-align: center;
+  width: 95%;
+  margin: 0 auto;
+}

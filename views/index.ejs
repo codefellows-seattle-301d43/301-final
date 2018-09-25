@@ -4,8 +4,20 @@
 <body>
   <%- include('partials/header'); %>
   <main class="site-content">
-    
+      <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for patient names..">
+      <ul id="patient-list">
+        <li><a href="#">Adele <i class="fa fa-user-plus"></i></a></li>
+        <li><a href="#">Agnes <i class="fa fa-user-plus"></i></a></li>
+      
+        <li><a href="#">Billy <i class="fa fa-user-plus"></i></a></li>
+        <li><a href="#">Bob <i class="fa fa-user-plus"></i></a></li>
+      
+        <li><a href="#">Calvin <i class="fa fa-user-plus"></i></a></li>
+        <li><a href="#">Christina <i class="fa fa-user-plus"></i></a></li>
+        <li><a href="#">Cindy <i class="fa fa-user-plus"></i></a></li>
+      </ul>
   </main>  
   <%- include('partials/footer'); %>
 </body>
 </html>
+
