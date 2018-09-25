@@ -22,3 +22,7 @@ body {
   width: 95%;
   margin: 0 auto;
 }
+
+.red {
+  color: #E80000; 
+}
