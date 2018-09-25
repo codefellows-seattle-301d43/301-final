@@ -1,53 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-  <%- include('partials/head'); %>
+<%- include('partials/head'); %>
+
 <body>
   <%- include('partials/header'); %>
   <main class="site-content">
-    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for patient names..">
-    <ul id="patient-list">
-      <li><a href="#">Adele</i></a></li>
-      <li><a href="#">Agnes</i></a></li>
-      <li><a href="#">Billy</i></a></li>
-      <li><a href="#">Bob</i></a></li>
-      <li><a href="#">Calvin</i></a></li>
-      <li><a href="#">Christina</i></a></li>
-      <li><a href="#">Cindy</i></a></li>
-      <li><a href="#">zdele</i></a></li>
-      <li><a href="#">Xgnes</i></a></li>
-      <li><a href="#">Yilly</i></a></li>
-      <li><a href="#">Oob</i></a></li>
-      <li><a href="#">Palvin</i></a></li>
-      <li><a href="#">Qhristina</i></a></li>
-      <li><a href="#">Rindy</i></a></li>
-    </ul>
-    <div>
+
+    <div class="form-container">
+      <div class="page-header">
         <h2>Add A New Patient</h2>
-        <form class=""  method="POST" action="/patient">
-            <label for="">First Name<input id="" type="text" placeholder="" required></label>
-            <label for="">Last Name<input id="" type="text" placeholder="" required></label>
-            <button>Submit</button>
-        </form>
+      </div>
+      <form class="form" method="POST" action="/patient">
+        <div class="inputs-form">
+          <p><input class="username input" type="text" placeholder="First Name" required></p>
+          <p><input class="lastname input" type="text" placeholder="Last Name" required></p>
+          <button class="submit">Submit</button>
+        </div>
+      </form>
     </div>
-    <div>
+    
+    <div class="under-form">
+      <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for patient names..">
       <h2>Patients</h2>
-      <ul>          
+      <ul id="patient-list">
         <li>
           <span>ID</span>
           <span>Last</span>
           <span>First</span>
         </li>
         <% patients.forEach( patient => {  %>
-          <li>
-            <span><%= patient.id %></span>
-            <span><%= patient.last_name %></span>
-            <span><%= patient.first_name %></span>
-          </li>
+        <li><a href="#">
+          <span><%= patient.id %></span>
+          <span><%= patient.last_name %>, </span>
+          <span><%= patient.first_name %></span>
+        </a></li>
         <% }) %>
       </ul>
-    </div>
-  </main>  
+    </div>    
+  </main>
   <%- include('partials/footer'); %>
 </body>
-</html>
 
+</html>
