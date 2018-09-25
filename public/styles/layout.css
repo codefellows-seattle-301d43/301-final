@@ -3,16 +3,6 @@ body {
   padding: 0;
 }
 
-header {
-  position: absolute;
-  top: 0;
-  left: 0;
-  padding: 0 100px;
-  background-color: #262626;
-  width: 100%;
-  box-sizing: border-box;
-}
-
 header .logo {
   color: #fff;
   height: 50px;
@@ -76,13 +66,17 @@ header nav ul li a.active {
   display: none;
 }
 
+div.menu-toggle-two {
+  display: none;
+}
+
 footer {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
-  background-color: #262626;
-  height: 70px;
+  background-color: #2C3539;
+  height: 50px;
   color:  #fff;
 }
 
@@ -95,6 +89,7 @@ footer {
   font-size: 20px;
   margin-right: 3px;
 }
+
 
 @media (max-width: 991px) {
   header {
@@ -130,3 +125,4 @@ footer {
     width: 100%;
   }
 }
+
