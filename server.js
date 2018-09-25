@@ -19,6 +19,7 @@ app.set('view engine', 'ejs');
 
 //Index
 app.get('/', records.getIndex);
+app.get('/patient', records.getPatients);
 
 //About us
 app.get('/about', records.getAbout);
