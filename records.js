@@ -98,6 +98,8 @@ const analyzeRecord = (req, res) => {
           console.log(phraseList);
           let filterList = ['day', 'week', 'days', 'weeks', 'month', 'months', 'year', 'years'];
           // console.log(JSON.parse(res.text).documents[0].keyPhrases);
+          console.log(phraseList.map(data => data.keyPhrases.filter(symptom => !filterList.includes(symptom))));
+
 
         });
 
