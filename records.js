@@ -104,17 +104,20 @@ const analyzeRecord = (req, res) => {
         .set('Accept', 'application/json')
         .set('Content-Type', 'application/json')
         .send(reqData)
-        .then(res => {
-          let phraseList = JSON.parse(res.text).documents;
-          console.log(phraseList);
-          let filterList = ['day', 'week', 'days', 'weeks', 'month', 'months', 'year', 'years'];
-          // console.log(JSON.parse(res.text).documents[0].keyPhrases);
-          console.log(phraseList.map(data => data.keyPhrases.filter(symptom => !filterList.includes(symptom))));
+        .then(responseData => {
+          let phraseList = JSON.parse(responseData.text).documents;
 
-
+          // **** !!!DO NOT DELETE!!! Slow filter, will optimize later. !!!DO NOT DELETE!!! ****
+          //
+          // let filterList = ['day', 'week', 'days', 'weeks', 'month', 'months', 'year', 'years'];
+          // phraseList.map(data => data.keyPhrases.filter(symptom => {
+          //   filterList.push(symptom);
+          //   return !filterList.includes(symptom);
+          // }));
+          
+          let allPhrasesFromRecords = phraseList.reduce((total,phraseList) => total.concat(phraseList.keyPhrases),[]);
+          res.render('pages/keyPhrases', {phrases: allPhrasesFromRecords});
         });
-
-      res.send('werk');
     }
   });
 };
