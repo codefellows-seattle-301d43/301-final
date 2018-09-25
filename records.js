@@ -16,26 +16,29 @@ const getIndex = (req, res) => {
   res.redirect('/patient');
 };
 
+
 const getPatients = (req, res) => {
   let SQL = 'SELECT * FROM patients';
   client.query(SQL, (err, serverRes) => {
     if(err){
       console.error(err);
-      res.redirect('/pages/error');
+      res.render('pages/error', {message: 'Server Error: We could not handle your request. Sorry!'});
     }else{
-      console.log(serverRes);
       res.render('index', {patients: serverRes.rows});
     }
   });
 };
 
+
 const getAbout = (req, res) => {
   console.log('about us, boring..');
 };
 
+
 const patientInfo = (req, res) => {
   console.log('hi i am a patient, fear me');
 };
+
 
 const recordInfo = (req, res) => {
   let SQL = 'SELECT * FROM records WHERE id = $1';
@@ -43,24 +46,28 @@ const recordInfo = (req, res) => {
   client.query(SQL, values, (err, serverRes) => {
     if(err){
       console.error(err);
-      res.redirect('/pages/error');
+      res.render('pages/error', {message: 'Server Error: We could not handle your request. Sorry!'});
     }else{
       res.render('pages/recordDetail', {record: serverRes.rows[0]});
     }
   });
 };
 
+
 const analyzeRecord = (req, res) => {
   console.log('magic gon happen');
 };
+
 
 const newPatient = (req, res) => {
   console.log('im new patient take it easy');
 };
 
+
 const newRecord = (req, res) => {
   console.log('new record, plz no big bills');
 };
+
 
 const deletePatient = (req, res) => {
   console.log('DEL.... bai have a good time');

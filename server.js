@@ -24,7 +24,7 @@ app.get('/patient', records.getPatients);
 //About us
 app.get('/about', records.getAbout);
 
-//Get single patient info
+//Get single patient info (demographics and records)
 app.get('/patient/:patientId', records.patientInfo);
 
 //Get single record info
@@ -60,7 +60,7 @@ app.delete('/patient/:patientId', records.deletePatient);
 //Simple temp 404 catcher
 app.get('*', (req, res) => {
   res.statusCode = 404;
-  res.send('404, go away');
+  res.render('pages/error', {message: '404: We can\'t find what you requested'});
 });
 
 app.listen(PORT, () => {
