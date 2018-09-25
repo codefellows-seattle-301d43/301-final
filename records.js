@@ -27,7 +27,10 @@ const getPatients = (req, res) => {
       console.error(err);
       res.render('pages/error', {message: 'Server Error: We could not handle your request. Sorry!'});
     }else{
-      res.render('index', {patients: serverRes.rows});
+      res.render('index', {
+        patients: serverRes.rows,
+        deleted: !!req.query.deleted
+      });
     }
   });
 };
@@ -52,7 +55,11 @@ const patientInfo = (req, res) => {
           console.error(err);
           res.render('pages/error', {message: 'Server Error: We could not handle your request. Sorry!'});
         } else {
-          res.render('pages/patient', {patient: patientRes.rows[0], records: recordsRes.rows, added: !!req.query.added});
+          res.render('pages/patient', {
+            patient: patientRes.rows[0],
+            records: recordsRes.rows,
+            added: !!req.query.added,
+          });
         }
       });
     }
@@ -68,7 +75,11 @@ const recordInfo = (req, res) => {
       console.error(err);
       res.render('pages/error', {message: 'Server Error: We could not handle your request. Sorry!'});
     }else{
-      res.render('pages/recordDetail', {record: serverRes.rows[0], added: !!req.query.added, patient_id: req.params.patientId});
+      res.render('pages/recordDetail', {
+        record: serverRes.rows[0],
+        added: !!req.query.added,
+        patient_id: req.params.patientId
+      });
     }
   });
 };
@@ -146,7 +157,7 @@ const deletePatient = (req, res) => {
       console.error(err);
       res.render('pages/error', {message: 'Server Error: We could not handle your request. Sorry!'});
     }else{
-      res.redirect('/patient');
+      res.redirect('/patient?deleted=true');
     }
   });
 };
