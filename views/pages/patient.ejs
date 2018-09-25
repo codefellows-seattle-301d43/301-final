@@ -10,7 +10,8 @@
     <form class="" method="POST" action="/patient/:patientId/analyze">
         <button>Analyze Keywords</button>
     </form>
-    <form class="" method="DELETE" action="/patient/:patientId">
+    <form id="delete" action="/patient/<%= patient.id %>" method="POST" >
+        <input type="hidden" name="_method" value="DELETE">
         <button>Delete Patient</button>
     </form>
 </div>
@@ -42,5 +43,7 @@
         <% }) %>
     </ul>
 </div>
+
+<script src="../scripts/patient.js"></script>
 
 <%- include('../partials/footer'); %>
