@@ -26,6 +26,17 @@ const patientInfo = (req, res) => {
 
 const recordInfo = (req, res) => {
   console.log('record time, be chillio');
+  let SQL = 'SELECT * FROM records WHERE id = $1';
+  let values = [req.params.recordId];
+  client.query(SQL, values, (err, serverRes) => {
+    if(err){
+      console.error(err);
+      serverRes.redirect('/pages/error');
+    }else{
+      console.log(serverRes.rows[0]);
+      res.render('pages/recordDetail', {record: serverRes.rows[0]});
+    }
+  });
 };
 
 const analyzeRecord = (req, res) => {
