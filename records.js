@@ -75,27 +75,30 @@ const recordInfo = (req, res) => {
 
 
 const analyzeRecord = (req, res) => {
-  let SQL = 'SELECT title, description FROM records WHERE patient_id = $1;';
+  let SQL = 'SELECT id, title, description FROM records WHERE patient_id = $1;';
   let values = [req.params.patientId];
   client.query(SQL, values, (err, apiResponse) => {
     if(err) {
       console.log(err);
       res.render('pages/error', {message: 'poop'});
     } else {
-      let reqData = apiResponse.rows.map((data, i) => {
-        return {language: 'en', id: i + 1, text: `${data.title} ${data.description}` };
+      let analysisData = apiResponse.rows.map(data => {
+        return {language: 'en', id: data.id, text: `${data.title} ${data.description}` };
       });
 
-      let dat = {documents: reqData };
+      let reqData = {documents: analysisData };
 
       superagent.post('https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/keyPhrases')
         .set('Ocp-Apim-Subscription-Key', authKey)
         .set('Accept', 'application/json')
         .set('Content-Type', 'application/json')
-        .send(dat)
+        .send(reqData)
         .then(res => {
-          console.log(JSON.parse(res.text));
-          console.log(JSON.parse(res.text).documents[0].keyPhrases);
+          let phraseList = JSON.parse(res.text).documents;
+          console.log(phraseList);
+          let filterList = ['day', 'week', 'days', 'weeks', 'month', 'months', 'year', 'years'];
+          // console.log(JSON.parse(res.text).documents[0].keyPhrases);
+
         });
 
       res.send('werk');
