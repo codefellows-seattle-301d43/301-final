@@ -1,13 +1,17 @@
 body {
+  display: flex;
+  flex-direction: column;
   background-color: #f1f1f1;
   font-family: 'Graduate', cursive;
+}
+
+html, body {
+  height: 100%;
 }
 
 header {
   background-color: #2C3539;
 }
-
-
 
 #lab_social_icon_footer a {
   color: #f1f1f1;
@@ -30,7 +34,6 @@ header {
 #lab_social_icon_footer .social {
   -webkit-transform: scale(0.8);
   /* Browser Variations: */
-  
   -moz-transform: scale(0.8);
   -o-transform: scale(0.8);
   -webkit-transition-duration: 0.5s;
@@ -57,3 +60,47 @@ header {
   color: #f39c12;
 }
 
+#myInput {
+  width: 100%; /* Full-width */
+  font-size: 16px; /* Increase font-size */
+  padding: 12px 20px 12px 40px; /* Add some padding */
+  border: 1px solid #ddd; /* Add a grey border */
+  margin-bottom: 12px; /* Add some space below the input */
+}
+
+#patient-list {
+  /* Remove default list styling */
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+#patient-list li a {
+  border: 1px solid #ddd; /* Add a border to all links */
+  margin-top: -1px; /* Prevent double borders */
+  background-color: #f6f6f6; /* Grey background color */
+  padding: 12px; /* Add some padding */
+  text-decoration: none; /* Remove default text underline */
+  font-size: 18px; /* Increase the font-size */
+  color: black; /* Add a black text color */
+  display: block; /* Make it into a block element to fill the whole list */
+}
+
+#patient-list li a:hover:not(.header) {
+  background-color: #eee; /* Add a hover effect to all links, except for headers */
+}
+
+.sticky-footer {
+  flex: 1 0 auto;
+  /* Equal to height of footer */
+  /* But also accounting for potential margin-bottom of last child */
+}
+
+.content-inside {
+  padding: 20px;
+  padding-bottom: 50px;
+}
+
+footer {
+  flex-shrink: 0;
+}
