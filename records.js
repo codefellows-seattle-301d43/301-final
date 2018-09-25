@@ -56,6 +56,7 @@ const recordInfo = (req, res) => {
 
 const analyzeRecord = (req, res) => {
   console.log('magic gon happen');
+
 };
 
 
