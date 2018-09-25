@@ -1,8 +1,13 @@
 <%- include('../partials/head'); %>
 <%- include('../partials/header'); %>
+
 <% if (added) { %>
     <p>Patient successfully added!</p>
-  <% } %>
+  
+<% } %>  <% if (deleted) { %>
+    <p>Record successfully deleted!</p>
+<% } %>
+
 <div class="">
     <h2>Patient Details:</h2>
     <p><%= patient.last_name %>, <%= patient.first_name %></p>
