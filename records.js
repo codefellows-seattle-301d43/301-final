@@ -158,7 +158,7 @@ const newRecord = (req, res) => {
   client.query(SQL, values, (err, serverRes) => {
     if(err){
       console.error(err);
-      res.render('pages/error', {message: 'Server Error: We could not handle your request. Sorry!'});
+      res.render('pages/error', {message: err});
     }else{
       res.redirect(`/record/${req.body.patient_id}/${serverRes.rows[0].id}?added=true`);
     }
