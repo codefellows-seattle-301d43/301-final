@@ -39,12 +39,29 @@ const getAbout = (req, res) => {
 
 
 const patientInfo = (req, res) => {
-  console.log('hi i am a patient, fear me');
+  let SQL = 'SELECT * FROM patients WHERE id = $1';
+  let values = [req.params.patientId];
+  client.query(SQL, values, (err, patientRes) => {
+    if(err){
+      console.error(err);
+      res.render('pages/error', {message: 'Server Error: We could not handle your request. Sorry!'});
+    } else {
+      SQL = "SELECT id, TO_CHAR(date, 'mon dd, yyyy') AS date, title FROM records WHERE patient_id = $1 ORDER BY id DESC";
+      client.query(SQL, values, (err, recordsRes) => {
+        if(err){
+          console.error(err);
+          res.render('pages/error', {message: 'Server Error: We could not handle your request. Sorry!'});
+        } else {
+          res.render('pages/patient', {patient: patientRes.rows[0], records: recordsRes.rows});
+        }
+      });
+    }
+  });
 };
 
 
 const recordInfo = (req, res) => {
-  let SQL = 'SELECT * FROM records WHERE id = $1';
+  let SQL = "SELECT id, TO_CHAR(date, 'mon dd, yyyy') AS date, title, description FROM records WHERE id = $1";
   let values = [req.params.recordId];
   client.query(SQL, values, (err, serverRes) => {
     if(err){
