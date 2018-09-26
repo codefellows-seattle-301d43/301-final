@@ -1,21 +1,18 @@
-$(function() {
-  $('.input').mousedown(() => {
-    $('.grab-span').addClass('floated-title');
-    $('#myInput').addClass('animated fadeOutRight');
-    $('.floatedOr').hide();
-    $('main.site-content').addClass('centered-form');
-    $('.form-container').addClass('animated fadeInLeft');
-    $('.floated-title').hide();
-  });
-
-  $('#myInput').mousedown(() => {
-    $('.grab-span').removeClass('floated-title');
-    $('.grab-span').show().addClass('center-existing');
-    $('#myInput').removeClass('animated fadeOutRight');
-    $('.floatedOr').hide();
-    $('.form-container').hide();
-    $('#patient-list').show(500).addClass('animated fadeInRight');
-    $('#myInput').addClass('search-width');
-    $('under-form').show(500).addClass('animated fadeInRight');
-  });
-});
+function filterPatients() {
+  // Declare variables
+  let input, filter, ul, li, a, i;
+  input = document.getElementById('myInput');
+  filter = input.value.toUpperCase();
+  ul = document.getElementById('patient-list');
+  li = ul.getElementsByTagName('li');
+  // Loop through all list items, and hide those who don't match the search query
+  for (i = 0; i < li.length; i++) {
+    a = li[i].getElementsByTagName('span')[1];
+    console.log('a', a);
+    if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+      li[i].style.display = '';
+    } else {
+      li[i].style.display = 'none';
+    }
+  }
+}
