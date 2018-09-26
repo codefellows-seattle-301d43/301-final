@@ -3,6 +3,10 @@ body {
   padding: 0;
 }
 
+header {
+  margin-bottom: 20px;
+}
+
 header .logo {
   color: #fff;
   height: 50px;
@@ -119,6 +123,10 @@ div.under-form #patient-list {
   display: none
 }
 
+#myInput {
+  width: 65%;
+}
+
 @media (max-width: 991px) {
   header {
     padding: 0 20px;
@@ -154,13 +162,14 @@ div.under-form #patient-list {
   }
 }
 @media (min-width: 760px) {
+
   main.site-content {
     display: flex;
     justify-content: center;
     width: 60%;
     margin: 0 auto;
   }
- 
+  
   div.form-container {
     display: flex;
     flex-direction: column;
