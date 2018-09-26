@@ -11,19 +11,19 @@ insert description
 Electronic Medical Records, Patient History Information Transfer, Knowledge Extraction, Natural Language Processing
 
 >### Requirements
-* "dotenv": "^6.0.0",
-* "ejs": "^2.6.1",
-* "express": "^4.16.3",
-* "method-override": "^3.0.0",
-* "pg": "^7.4.3",
-* "superagent": "^4.0.0-beta.5"
+* dotenv: 6.0.0
+* ejs: 2.6.1
+* express: 4.16.3
+* method-override: 3.0.0
+* pg: 7.4.3
+* superagent: 4.0.0-beta.5
 
 >### How To Use Our App
 Development: Create a Node instance and clone the repo.
 As a User: Navigate to (http://medwords.info/), select a patient or create a new patient, create or view a patient's records, send those records off for key phrase analysis and view the key phrases.
 
 >### Database Schema
-insert schema
+![image info](./img/schema.png)
 
 >### API and Site Endpoints
 * **GET /** - This route takes you to our index
