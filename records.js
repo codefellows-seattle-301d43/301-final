@@ -128,7 +128,7 @@ const analyzeRecord = (req, res) => {
               if(allPhrasesFromRecords[i] === phrase) count++;
             }
             return {name: phrase, total: count};
-          }).filter(term => term.total > 1).map(word => word.name);
+          }).sort((a,b) => b.total - a.total).map(word => `${word.name} (${word.total})`);
 
           res.render('pages/keyPhrases', {phrases: mostFrequentPhrases});
         });
