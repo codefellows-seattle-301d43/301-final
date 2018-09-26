@@ -11,12 +11,14 @@ insert description
 Electronic Medical Records, Patient History Information Transfer, Knowledge Extraction, Natural Language Processing
 
 >### Requirements
+* Node.js
 * dotenv: 6.0.0
 * ejs: 2.6.1
 * express: 4.16.3
 * method-override: 3.0.0
 * pg: 7.4.3
 * superagent: 4.0.0-beta.5
+* API key for Microsoft Text Analytics
 
 >### How To Use Our App
 Development: Create a Node instance and clone the repo.
