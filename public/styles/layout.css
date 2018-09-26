@@ -126,6 +126,12 @@ div.under-form #patient-list {
   width: 65%;
 }
 
+.center-existing {
+  display: flex;
+  justify-content: center;
+  position: none;
+}
+
 @media (max-width: 991px) {
   header {
     padding: 0 20px;
