@@ -142,8 +142,9 @@ const newPatient = (req, res) => {
   let values = [req.body.first_name, req.body.last_name];
   client.query(SQL, values, (err, serverRes) => {
     if(err){
+      console.log(values);
       console.error(err);
-      res.render('pages/error', {message: 'Server Error: We could not handle your request. Sorry!'});
+      res.render('pages/error', {message: err});
     }else{
       res.redirect(`/patient/${serverRes.rows[0].id}?added=true`);
     }
