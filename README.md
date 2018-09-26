@@ -2,7 +2,7 @@
 
 **Team Members** - Aaron Frank, Jeff Weng, Kendra Ellis, Tre Cain
 
-**Deployed Site**: (insert heroku link)
+**Deployed Site**: (http://medwords.info/)
 
 >### Project Description
 insert description
