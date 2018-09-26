@@ -3,6 +3,10 @@ body {
   padding: 0;
 }
 
+header {
+  margin-bottom: 20px;
+}
+
 header .logo {
   color: #fff;
   height: 50px;
@@ -104,7 +108,6 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 30px;
 }
 
 .centered-form {
@@ -117,6 +120,16 @@ div.under-form h2 {
 
 div.under-form #patient-list {
   display: none
+}
+
+#myInput {
+  width: 65%;
+}
+
+.center-existing {
+  display: flex;
+  justify-content: center;
+  position: none;
 }
 
 @media (max-width: 991px) {
@@ -153,14 +166,15 @@ div.under-form #patient-list {
     width: 100%;
   }
 }
-@media (min-width: 760px) {
+@media (min-width: 1250px) {
+
   main.site-content {
     display: flex;
     justify-content: center;
     width: 60%;
     margin: 0 auto;
   }
- 
+  
   div.form-container {
     display: flex;
     flex-direction: column;
@@ -180,6 +194,12 @@ div.under-form #patient-list {
     justify-content: center;
     margin-left: 45px;
     margin-bottom: 0px;
+  }
+
+  .floated-title {
+    bottom: 432px;
+    position: absolute;
+    right: 300px;
   }
 }
 
