@@ -100,7 +100,7 @@ const analyzeRecord = (req, res) => {
 
       let reqData = {documents: analysisData };
       if (reqData.documents.length === 0) {
-        res.render('pages/keyPhrases', {phrases: ['Patient has no records to analyze']});
+        res.render('pages/keyPhrases', {phrases: ['Patient has no records to analyze'], patient_id: req.params.patientId});
       } else {
         superagent.post('https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/keyPhrases')
           .set('Ocp-Apim-Subscription-Key', authKey)
@@ -132,7 +132,7 @@ const analyzeRecord = (req, res) => {
               return {name: phrase, total: count};
             }).sort((a,b) => b.total - a.total).map(word => `${word.name} (${word.total})`);
 
-            res.render('pages/keyPhrases', {phrases: mostFrequentPhrases});
+            res.render('pages/keyPhrases', {phrases: mostFrequentPhrases, patient_id: req.params.patientId});
           });
       }
     }
