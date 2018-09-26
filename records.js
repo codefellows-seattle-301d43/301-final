@@ -100,7 +100,7 @@ const analyzeRecord = (req, res) => {
 
       let reqData = {documents: analysisData };
       if (reqData.documents.length === 0) {
-        res.render('pages/error', {message: 'Patient has no records to analyze'});
+        res.render('pages/keyPhrases', {phrases: ['Patient has no records to analyze']});
       } else {
         superagent.post('https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/keyPhrases')
           .set('Ocp-Apim-Subscription-Key', authKey)
