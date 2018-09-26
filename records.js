@@ -38,6 +38,7 @@ const getPatients = (req, res) => {
 
 const getAbout = (req, res) => {
   console.log('about us, boring..');
+  res.render('pages/about');
 };
 
 
@@ -110,14 +111,6 @@ const analyzeRecord = (req, res) => {
           .then(responseData => {
             let phraseList = JSON.parse(responseData.text).documents;
 
-            // **** !!!DO NOT DELETE!!! Slow filter, will optimize later. !!!DO NOT DELETE!!! ****
-            //
-            // let filterList = ['day', 'week', 'days', 'weeks', 'month', 'months', 'year', 'years'];
-            // phraseList.map(data => data.keyPhrases.filter(symptom => {
-            //   filterList.push(symptom);
-            //   return !filterList.includes(symptom);
-            // }));
-            
             let allPhrasesFromRecords = phraseList.reduce((total,phraseList) => total.concat(phraseList.keyPhrases),[]);
             let allPhrasesSet = new Set(allPhrasesFromRecords);
 
