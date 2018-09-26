@@ -99,39 +99,42 @@ const analyzeRecord = (req, res) => {
       });
 
       let reqData = {documents: analysisData };
+      if (reqData.documents.length === 0) {
+        res.render('pages/keyPhrases', {phrases: ['Patient has no records to analyze'], patient_id: req.params.patientId});
+      } else {
+        superagent.post('https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/keyPhrases')
+          .set('Ocp-Apim-Subscription-Key', authKey)
+          .set('Accept', 'application/json')
+          .set('Content-Type', 'application/json')
+          .send(reqData)
+          .then(responseData => {
+            let phraseList = JSON.parse(responseData.text).documents;
 
-      superagent.post('https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/keyPhrases')
-        .set('Ocp-Apim-Subscription-Key', authKey)
-        .set('Accept', 'application/json')
-        .set('Content-Type', 'application/json')
-        .send(reqData)
-        .then(responseData => {
-          let phraseList = JSON.parse(responseData.text).documents;
+            // **** !!!DO NOT DELETE!!! Slow filter, will optimize later. !!!DO NOT DELETE!!! ****
+            //
+            // let filterList = ['day', 'week', 'days', 'weeks', 'month', 'months', 'year', 'years'];
+            // phraseList.map(data => data.keyPhrases.filter(symptom => {
+            //   filterList.push(symptom);
+            //   return !filterList.includes(symptom);
+            // }));
+            
+            let allPhrasesFromRecords = phraseList.reduce((total,phraseList) => total.concat(phraseList.keyPhrases),[]);
+            let allPhrasesSet = new Set(allPhrasesFromRecords);
 
-          // **** !!!DO NOT DELETE!!! Slow filter, will optimize later. !!!DO NOT DELETE!!! ****
-          //
-          // let filterList = ['day', 'week', 'days', 'weeks', 'month', 'months', 'year', 'years'];
-          // phraseList.map(data => data.keyPhrases.filter(symptom => {
-          //   filterList.push(symptom);
-          //   return !filterList.includes(symptom);
-          // }));
-          
-          let allPhrasesFromRecords = phraseList.reduce((total,phraseList) => total.concat(phraseList.keyPhrases),[]);
-          
-          //Find all repeated words
-          let allPhrasesSet = new Set(allPhrasesFromRecords);
-          let allPhrases = Array.from(allPhrasesSet);
+            //Find all repeated words
+            let allPhrases = Array.from(allPhrasesSet);
 
-          let mostFrequentPhrases = allPhrases.map((phrase) => {
-            let count = 0;
-            for(let i=0; i < allPhrasesFromRecords.length; i++){
-              if(allPhrasesFromRecords[i] === phrase) count++;
-            }
-            return {name: phrase, total: count};
-          }).filter(term => term.total > 1).map(word => word.name);
+            let mostFrequentPhrases = allPhrases.map((phrase) => {
+              let count = 0;
+              for(let i=0; i < allPhrasesFromRecords.length; i++){
+                if(allPhrasesFromRecords[i] === phrase) count++;
+              }
+              return {name: phrase, total: count};
+            }).sort((a,b) => b.total - a.total).map(word => `${word.name} (${word.total})`);
 
-          res.render('pages/keyPhrases', {phrases: mostFrequentPhrases});
-        });
+            res.render('pages/keyPhrases', {phrases: mostFrequentPhrases, patient_id: req.params.patientId});
+          });
+      }
     }
   });
 };
