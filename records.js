@@ -38,6 +38,7 @@ const getPatients = (req, res) => {
 
 const getAbout = (req, res) => {
   console.log('about us, boring..');
+  res.render('pages/about');
 };
 
 
