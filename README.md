@@ -1,4 +1,4 @@
-# Code 301 Final Project (version 1.0.0)
+# Code 301 Final Project "Med Words" (version 1.0.0)
 
 **Team Members** - Aaron Frank, Jeff Weng, Kendra Ellis, Tre Cain
 
@@ -8,10 +8,19 @@
 insert description
 
 >### Problem Domain
-insert problem domain
+Electronic Medical Records, Patient History Information Transfer, Knowledge Extraction, Natural Language Processing
+
+>### Requirements
+*"dotenv": "^6.0.0",
+*"ejs": "^2.6.1",
+*"express": "^4.16.3",
+*"method-override": "^3.0.0",
+*"pg": "^7.4.3",
+*"superagent": "^4.0.0-beta.5"*
 
 >### How To Use Our App
-insert directions and required packages downloads
+Development: Create a Node instance and clone the repo.
+As a User: Navigate to (http://medwords.info/), select a patient or create a new patient, create or view a patient's records, send those records off for key phrase analysis and view the key phrases.
 
 >### Database Schema
 insert schema
