@@ -6,7 +6,12 @@
   <%- include('partials/header'); %>
   <main class="site-content">
 
-    <div class="form-container">
+    <div>
+      <a href="#add-patient">Add a New Patient</a>
+      <a href="#search-patient">Search for an Existing</a>
+    </div>
+
+    <div id="add-patient" class="form-container">
       <div class="page-header">
         <h2>Add A New Patient</h2>
       </div>
@@ -18,9 +23,8 @@
         </div>
       </form>
     </div>
-    <span class="floatedOr"><h3>or</h3></span>
     <span class="floated-title grab-span"><h2>Search Existing Patient</h2></span>    
-    <div class="under-form">
+    <div  id="search-patient" class="under-form">
       <input type="text" id="myInput" class="input" onkeyup="myFunction()" placeholder="Search for patient names..">
       <h2>Patients</h2>
       <ul id="patient-list">
