@@ -3,8 +3,9 @@ body {
   flex-direction: column;
   justify-content: space-between;
   background-color: #f1f1f1;
-  font-family: 'Graduate', cursive;
+  font-family: 'Roboto', sans-serif;
 }
+
 
 html, body {
   height: 100%;
@@ -12,6 +13,7 @@ html, body {
 
 header {
   background-color: #2C3539;
+  font-family: 'Graduate', cursive;
 }
 
 #lab_social_icon_footer a {
@@ -104,4 +106,5 @@ header {
 
 footer {
   flex-shrink: 0;
+  font-family: 'Graduate', cursive;
 }
