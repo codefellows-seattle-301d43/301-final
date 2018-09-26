@@ -1,17 +1,20 @@
-<%- include('../partials/head'); %>
-<%- include('../partials/header'); %>
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../partials/head', {title: 'Patient Detail'}); %>
+<body>
+    <%- include('../partials/header'); %>
 
-<% if (added) { %>
-    <p>Patient successfully added!</p>
-  
-<% } %>  <% if (deleted) { %>
-    <p>Record successfully deleted!</p>
-<% } %>
+    <% if (added) { %>
+        <p>Patient successfully added!</p>
+    
+    <% } %>  <% if (deleted) { %>
+        <p>Record successfully deleted!</p>
+    <% } %>
 
-<div class="">
-    <h2>Patient Details:</h2>
-    <p><%= patient.last_name %>, <%= patient.first_name %></p>
-</div>
+    <div class="">
+        <h2>Patient Details:</h2>
+        <p><%= patient.last_name %>, <%= patient.first_name %></p>
+    </div>
 
 <div class="">
     <form class="" method="POST" action="/patient/<%= patient.id %>/analyze">
@@ -34,24 +37,25 @@
     </form>
 </div>
 
-<div>
-    <h2>Patient's Records</h2>
-    <ul>
-        <li>
-            <span>DATE</span>
-            <span>TITLE</span>
-        </li>
-        <% records.forEach( record => {  %>
+    <div>
+        <h2>Patient's Records</h2>
+        <ul>
             <li>
-                <a href="/record/<%= patient.id %>/<%= record.id %>">
-                <span><%= record.date %></span>
-                <span><%= record.title %></span>
-                </a>
+                <span>DATE</span>
+                <span>TITLE</span>
             </li>
-        <% }) %>
-    </ul>
-</div>
+            <% records.forEach( record => {  %>
+                <li>
+                    <a href="/record/<%= patient.id %>/<%= record.id %>">
+                    <span><%= record.date %></span>
+                    <span><%= record.title %></span>
+                    </a>
+                </li>
+            <% }) %>
+        </ul>
+    </div>
 
-<script src="../scripts/patient.js"></script>
-
-<%- include('../partials/footer'); %>
+    <script src="../scripts/patient.js"></script>
+    <%- include('../partials/footer'); %>
+</body>
+</html>

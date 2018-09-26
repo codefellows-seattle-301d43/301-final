@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-  <%- include('../partials/head'); %>
+  <%- include('../partials/head', {title: 'Error'}); %>
 <body>
   <%- include('../partials/header'); %>
   <main class="sticky-footer">
-    <p><%= message %></p>      
+    <p><%= message %></p>     
+    <button id="back">Back</button> 
   </main>
+  <script src="../scripts/error.js"></script>
   <%- include('../partials/footer'); %>
 </body>
 </html>

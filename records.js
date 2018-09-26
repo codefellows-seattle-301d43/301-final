@@ -38,6 +38,7 @@ const getPatients = (req, res) => {
 
 const getAbout = (req, res) => {
   console.log('about us, boring..');
+  res.render('pages/about');
 };
 
 
@@ -100,6 +101,7 @@ const analyzeRecord = (req, res) => {
       });
 
       let reqData = {documents: analysisData };
+<<<<<<< HEAD
 
       superagent.post('https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/keyPhrases')
         .set('Ocp-Apim-Subscription-Key', authKey)
@@ -133,6 +135,36 @@ const analyzeRecord = (req, res) => {
 
           res.render('pages/keyPhrases', {phrases: mostFrequentPhrases});
         });
+=======
+      if (reqData.documents.length === 0) {
+        res.render('pages/keyPhrases', {phrases: ['Patient has no records to analyze'], patient_id: req.params.patientId});
+      } else {
+        superagent.post('https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/keyPhrases')
+          .set('Ocp-Apim-Subscription-Key', authKey)
+          .set('Accept', 'application/json')
+          .set('Content-Type', 'application/json')
+          .send(reqData)
+          .then(responseData => {
+            let phraseList = JSON.parse(responseData.text).documents;
+
+            let allPhrasesFromRecords = phraseList.reduce((total,phraseList) => total.concat(phraseList.keyPhrases),[]);
+            let allPhrasesSet = new Set(allPhrasesFromRecords);
+
+            //Find all repeated words
+            let allPhrases = Array.from(allPhrasesSet);
+
+            let mostFrequentPhrases = allPhrases.map((phrase) => {
+              let count = 0;
+              for(let i=0; i < allPhrasesFromRecords.length; i++){
+                if(allPhrasesFromRecords[i] === phrase) count++;
+              }
+              return {name: phrase, total: count};
+            }).sort((a,b) => b.total - a.total).map(word => `${word.name} (${word.total})`);
+
+            res.render('pages/keyPhrases', {phrases: mostFrequentPhrases, patient_id: req.params.patientId});
+          });
+      }
+>>>>>>> master
     }
   });
 };
@@ -143,8 +175,9 @@ const newPatient = (req, res) => {
   let values = [req.body.first_name, req.body.last_name];
   client.query(SQL, values, (err, serverRes) => {
     if(err){
+      console.log(values);
       console.error(err);
-      res.render('pages/error', {message: 'Server Error: We could not handle your request. Sorry!'});
+      res.render('pages/error', {message: err});
     }else{
       res.redirect(`/patient/${serverRes.rows[0].id}?added=true`);
     }
@@ -159,7 +192,7 @@ const newRecord = (req, res) => {
   client.query(SQL, values, (err, serverRes) => {
     if(err){
       console.error(err);
-      res.render('pages/error', {message: 'Server Error: We could not handle your request. Sorry!'});
+      res.render('pages/error', {message: err});
     }else{
       res.redirect(`/record/${req.body.patient_id}/${serverRes.rows[0].id}?added=true`);
     }

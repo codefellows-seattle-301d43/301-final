@@ -1,15 +1,10 @@
 body {
-  margin: 0;
-  padding: 0;
+  display: flex;
+  flex-direction: column;
 }
 
 header .logo {
-  color: #fff;
-  height: 50px;
-  line-height: 50px;
-  font-size: 24px;
   float: left;
-  font-weight: bold;
 }
 
 header nav {
@@ -18,45 +13,16 @@ header nav {
 
 header nav ul {
   display: flex;
-  margin: 0;
-  padding: 0;
 }
 
 header nav ul li {
-  list-style: none;
   position: relative;
 }
 
 header nav ul li .sub-menu:before {
-  content: "\f0d7";
   position: absolute;
-  font-family: fontAwesome;
-  line-height: 50px;
-  color: #fff;
-  right: 5px;
 }
 
-header nav ul li.active .sub-menu:before {
-  content: "\f0d8";
-}
-
-header nav ul li ul li {
-  display: block;
-  width: 200px;
-}
-header nav ul li a {
-  color: #fff;
-  text-decoration: none;
-  padding: 0 20px;
-  height: 50px;
-  line-height: 50px;
-  display: block;
-}
-header nav ul li a:hover,
-header nav ul li a.active {
-  color: #fff;
-  background: #E80000;
-}
 .menu-toggle {
   color: #fff;
   float: right;
@@ -74,10 +40,6 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  background-color: #2C3539;
-  height: 50px;
-  color:  #fff;
 }
 
 .footer-logo {
@@ -104,7 +66,6 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 30px;
 }
 
 .centered-form {
@@ -115,8 +76,10 @@ div.under-form h2 {
   display: none;
 }
 
-div.under-form #patient-list {
-  display: none
+.center-existing {
+  display: flex;
+  justify-content: center;
+  position: none;
 }
 
 @media (max-width: 991px) {
@@ -153,14 +116,15 @@ div.under-form #patient-list {
     width: 100%;
   }
 }
-@media (min-width: 760px) {
+@media (min-width: 1250px) {
+
   main.site-content {
     display: flex;
     justify-content: center;
     width: 60%;
     margin: 0 auto;
   }
- 
+  
   div.form-container {
     display: flex;
     flex-direction: column;
@@ -180,6 +144,12 @@ div.under-form #patient-list {
     justify-content: center;
     margin-left: 45px;
     margin-bottom: 0px;
+  }
+
+  .floated-title {
+    bottom: 432px;
+    position: absolute;
+    right: 300px;
   }
 }
 

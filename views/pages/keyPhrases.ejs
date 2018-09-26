@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-<%- include('../partials/head'); %>
+<%- include('../partials/head', {title: 'Key Phrases'}); %>
 <body>
-  <%- include('../partials/header'); %>\
+  <%- include('../partials/header'); %>
   <h1>Key Phrases:</h1>
   <main>
       <ul>
@@ -11,5 +11,7 @@
         <% }) %>
       </ul>
   </main>
+  <a href="/patient/<%= patient_id %>">Back</a>
+  <%- include('../partials/footer'); %>
 </body>
 </html>

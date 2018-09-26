@@ -1,33 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-<%- include('partials/head'); %>
+<%- include('partials/head', {title: 'Med Words'}); %>
 
 <body>
   <%- include('partials/header'); %>
   <main class="site-content">
-
-    <div class="form-container">
+    <div id="add-patient" class="form-container">
       <div class="page-header">
         <h2>Add A New Patient</h2>
       </div>
       <form class="form" method="POST" action="/patient">
         <div class="inputs-form">
-          <p><input class="username input" type="text" placeholder="First Name" required></p>
-          <p><input class="lastname input" type="text" placeholder="Last Name" required></p>
+          <p><input class="username input" name="first_name" type="text" placeholder="First Name" required></p>
+          <p><input class="lastname input" name="last_name" type="text" placeholder="Last Name" required></p>
           <button class="submit">Submit</button>
         </div>
       </form>
     </div>
-    <span class="floatedOr"><h3>or</h3></span>
-    <div class="under-form">
-      <input type="text" id="myInput" class="input" onkeyup="myFunction()" placeholder="Search for patient names..">
+    <span class="floated-title grab-span"><h2>Search Existing Patient</h2></span>    
+    <div  id="search-patient" class="under-form">
+      <input type="text" id="myInput" class="input" onkeyup="filterPatients()" placeholder="Search for patient names..">
       <h2>Patients</h2>
+      <p>
+        <span>ID</span>
+        <span>Last</span>
+        <span>First</span>
+      </p>
       <ul id="patient-list">
-        <li>
-          <span>ID</span>
-          <span>Last</span>
-          <span>First</span>
-        </li>
         <% patients.forEach( patient => {  %>
           <li>
             <a href="/patient/<%= patient.id %>"> 
