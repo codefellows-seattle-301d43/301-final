@@ -18,7 +18,12 @@ i.watermellon {
 #patient-list {
   text-align: center;
   width: 95%;
-  margin: 0 auto;
+  margin-top: 0;
+  margin-bottom: 50px;
+  list-style-type: none;
+  padding: 0;
+  height: 400px;
+  background-color: #f6f6f6; 
 }
 
 .red {
@@ -70,4 +75,9 @@ input.input {
 #myInput {
   height: 30px;
   border: 1px solid #b3aca7;
+  width: 89%; /* Full-width */
+  font-size: 16px; /* Increase font-size */
+  padding: 12px 20px 12px 40px; /* Add some padding */
+  border: 1px solid #ddd; /* Add a grey border */
+  margin-bottom: 0px; /* Add some space below the input */
 }

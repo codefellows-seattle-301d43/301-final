@@ -76,14 +76,6 @@ div.under-form h2 {
   display: none;
 }
 
-div.under-form #patient-list {
-  display: none
-}
-
-#myInput {
-  width: 65%;
-}
-
 .center-existing {
   display: flex;
   justify-content: center;
