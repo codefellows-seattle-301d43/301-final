@@ -81,6 +81,10 @@ i.watermellon {
   display: block; /* Make it into a block element to fill the whole list */
 }
 
+#patient-list li a:hover {
+  background-color: #b3aca7;
+}
+
 .red {
   color: #E80000; 
 }
@@ -151,6 +155,10 @@ i.watermellon {
   justify-content: space-around;
 }
 
+ul li a:hover {
+  background-color: #c9363a;
+}
+
 #myInput {
   height: 30px;
   border: 1px solid #b3aca7;
@@ -193,4 +201,13 @@ i.watermellon {
 
 .submit-center {
   margin: 0 auto;
+}
+
+.recordD-main {
+  position: absolute;
+  bottom: 30%;
+}
+
+.active {
+  background-color: #c9363a;
 }
