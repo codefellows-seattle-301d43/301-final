@@ -12,11 +12,13 @@
 	<% if (deleted) { %>
 	<p>Record successfully deleted!</p>
 	<% } %>
-
+<main>
+	
+</main>
 	<div class="patient-container">
 		<div class="patient-detail-container">
 			<div class="one">
-				<h2>Patient Details:</h2>
+				<h3>Patient Details:</h3>
 				<p>
 					<%= patient.last_name %>,
 					<%= patient.first_name %>
@@ -31,7 +33,7 @@
 			</div>
 		</div>
 		
-		<h2 class="center">Add A New Patient Record</h2>
+		<h3 class="center">Add A New Patient Record</h3>
 		<div class="new-record-container">
 			<div class="one one-form">
 				<form class="" method="POST" action="/record">
@@ -40,16 +42,10 @@
 					<textarea id="textarea" class="input"placeholder="Description" name="description" required></textarea>
 					<button class="submit">Submit</button>
 				</form>
-				<form id="delete" action="/patient/<%= patient.id %>" method="POST">
-					<input type="hidden" name="_method" value="DELETE">
-					<button class="submit">Delete Patient</button>
-				</form>
 			</div>
-			<!-- <div class="two">
-			</div> -->
 		</div>
 
-		<h2 class="center">Patient's Records</h2>
+		<h3 class="center">Patient's Records</h3>
 		<div class="patient-records-cotainer">
 			<p class="search-patient-label">
 				<span>DATE</span>
@@ -70,6 +66,11 @@
 				<% }) %>
 			</ul>
 		</div>
+
+		<form id="delete" action="/patient/<%= patient.id %>" method="POST">
+			<input type="hidden" name="_method" value="DELETE">
+			<button class="submit">Delete Patient</button>
+		</form>
 	</div>
 	<script src="/scripts/delete.js"></script>
 	<%- include('../partials/footer'); %>
