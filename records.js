@@ -38,6 +38,7 @@ const getPatients = (req, res) => {
 
 const getAbout = (req, res) => {
   console.log('about us, boring..');
+  res.render('pages/about');
 };
 
 
@@ -88,13 +89,14 @@ const recordInfo = (req, res) => {
 
 const analyzeRecord = (req, res) => {
   let SQL = 'SELECT id, title, description FROM records WHERE patient_id = $1;';
+  console.log(req.body.lastName, req.body.firstName);
   let values = [req.params.patientId];
-  client.query(SQL, values, (err, apiResponse) => {
+  client.query(SQL, values, (err, data) => {
     if(err) {
-      console.log(err);
-      res.render('pages/error', {message: 'poop'});
+      res.render('pages/error', {message: err});
     } else {
-      let analysisData = apiResponse.rows.map(data => {
+      let analysisData = data.rows.map(data => {
+        //Format the data to acceptable params for MSFT API
         return {language: 'en', id: data.id, text: `${data.title} ${data.description}` };
       });
 
@@ -107,19 +109,20 @@ const analyzeRecord = (req, res) => {
           .set('Accept', 'application/json')
           .set('Content-Type', 'application/json')
           .send(reqData)
-          .then(responseData => {
-            let phraseList = JSON.parse(responseData.text).documents;
+          .then(apiResponse => {
+            let phraseList = JSON.parse(apiResponse.text).documents;
 
-            // **** !!!DO NOT DELETE!!! Slow filter, will optimize later. !!!DO NOT DELETE!!! ****
-            //
-            // let filterList = ['day', 'week', 'days', 'weeks', 'month', 'months', 'year', 'years'];
-            // phraseList.map(data => data.keyPhrases.filter(symptom => {
-            //   filterList.push(symptom);
-            //   return !filterList.includes(symptom);
-            // }));
-            
             let allPhrasesFromRecords = phraseList.reduce((total,phraseList) => total.concat(phraseList.keyPhrases),[]);
             let allPhrasesSet = new Set(allPhrasesFromRecords);
+
+            // Temp method for !!efficiency
+            let obj = {};
+            allPhrasesFromRecords.forEach(num => obj[num] ? obj[num]++ : obj[num] = 1);
+            let sorted = Object.keys(obj).sort((a, b) => {
+              return obj[a] - obj[b];
+            });
+            console.log(obj);
+            console.log(sorted);
 
             //Find all repeated words
             let allPhrases = Array.from(allPhrasesSet);

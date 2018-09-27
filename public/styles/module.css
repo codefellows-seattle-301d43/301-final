@@ -2,18 +2,56 @@ h2{
   font-family: 'Graduate', cursive;
 }
 
-i.watermellon {
-  color: #E80000;
+header .logo   {
+  color: #fff;
+  height: 50px;
+  line-height: 50px;
+  font-size: 24px;
+  font-weight: bold;
 }
 
-body {
+header nav ul {
+  margin: 0;
+  padding: 0;
+}
+
+header nav ul li {
+  list-style: none;
+}
+
+header nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  padding: 0 20px;
+  height: 50px;
+  line-height: 50px;
+  display: block;
+}
+
+.inputs-form {
   display: flex;
-  min-height: 100vh;
   flex-direction: column;
+  align-items: center;
+}
+
+i.watermellon {
+  color: rgb(201, 54, 58);
 }
 
 .site-content {
   flex: 1;
+}
+
+#lab_social_icon_footer a {
+  color: #f1f1f1;
+  font-size: 15px;
+}
+
+.text-center {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 10px;
 }
 
 .show {
@@ -23,16 +61,50 @@ body {
 
 #patient-list {
   text-align: center;
-  width: 95%;
-  margin: 0 auto;
+  width: 100%;
+  margin-top: 0;
+  margin-bottom: 50px;
+  list-style-type: none;
+  padding: 0;
+  height: 400px;
+  background-color: #f6f6f6; 
+}
+
+#patient-list li a {
+  border: 1px solid #ddd; /* Add a border to all links */
+  margin-top: -1px; /* Prevent double borders */
+  background-color: #f6f6f6; /* Grey background color */
+  padding: 12px; /* Add some padding */
+  text-decoration: none; /* Remove default text underline */
+  font-size: 18px; /* Increase the font-size */
+  color: black; /* Add a black text color */
+  display: block; /* Make it into a block element to fill the whole list */
 }
 
 .red {
   color: #E80000; 
 }
 
-input.input {
+.detail-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.input {
   background-color: white;
+  font-family: Lato, sans-serif;
+  font-size: 0.875em;
+  width: 400px;
+  height: 50px;
+  color: rgb(114, 102, 89);
+  padding: 0px 15px;
+  outline: none;
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgb(179, 172, 167);
+  border-image: initial;
+  transition: all 0.3s ease-in-out 0s;
 }
 
 .floated-title {
@@ -40,122 +112,6 @@ input.input {
   justify-content: center;
   margin-bottom: 10px;
 }
-
-
-@import url(https://fonts.googleapis.com/css?family=Lato:100,300,400);
-
-input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
-  color: #aca49c;
-  font-size: 0.875em;
-}
-
-input:focus::-webkit-input-placeholder, textarea:focus::-webkit-input-placeholder {
-  color: #bbb5af;
-}
-
-input::-moz-placeholder, textarea::-moz-placeholder {
-  color: #aca49c;
-  font-size: 0.875em;
-}
-
-input:focus::-moz-placeholder, textarea:focus::-moz-placeholder {
-  color: #bbb5af;
-}
-
-input::placeholder, textarea::placeholder {
-  color: #aca49c;
-  font-size: 0.875em;
-}
-
-input:focus::placeholder, textarea::focus:placeholder {
-  color: #bbb5af;
-}
-
-input::-ms-placeholder, textarea::-ms-placeholder {
-  color: #aca49c;
-  font-size: 0.875em;
-}
-
-input:focus::-ms-placeholder, textarea:focus::-ms-placeholder {
-  color: #bbb5af;
-}
-
-/* on hover placeholder */
-
-input:hover::-webkit-input-placeholder, textarea:hover::-webkit-input-placeholder {
-  color: #e2dedb;
-  font-size: 0.875em;
-}
-
-input:hover:focus::-webkit-input-placeholder, textarea:hover:focus::-webkit-input-placeholder {
-  color: #cbc6c1;
-}
-
-input:hover::-moz-placeholder, textarea:hover::-moz-placeholder {
-  color: #e2dedb;
-  font-size: 0.875em;
-}
-
-input:hover:focus::-moz-placeholder, textarea:hover:focus::-moz-placeholder {
-  color: #cbc6c1;
-}
-
-input:hover::placeholder, textarea:hover::placeholder {
-  color: #e2dedb;
-  font-size: 0.875em;
-}
-
-input:hover:focus::placeholder, textarea:hover:focus::placeholder {
-  color: #cbc6c1;
-}
-
-input:hover::placeholder, textarea:hover::placeholder {
-  color: #e2dedb;
-  font-size: 0.875em;
-}
-
-input:hover:focus::-ms-placeholder, textarea:hover::focus:-ms-placeholder {
-  color: #cbc6c1;
-}
-
-.inputs-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-/* form css */
-
-.form {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 20px;
-}
-
- .input {
-  font-family: 'Lato', sans-serif;
-  font-size: 0.875em;
-  width: 250px;
-  height: 50px;
-  padding: 0px 15px 0px 15px;
-  
-  background: transparent;
-  outline: none;
-  color: #726659;
-  
-  border: solid 1px #b3aca7;
-  
-  transition: all 0.3s ease-in-out;
-  -webkit-transition: all 0.3s ease-in-out;
-  -moz-transition: all 0.3s ease-in-out;
-  -ms-transition: all 0.3s ease-in-out; */
-}
-
-.input:hover {
-  background: #b3aca7;
-  color: #e2dedb;
-}
-
 .submit {
   width: 200px;
   height: 50px;
@@ -165,10 +121,8 @@ input:hover:focus::-ms-placeholder, textarea:hover::focus:-ms-placeholder {
   font-family: 'Lato', sans-serif;
   font-size: 0.875em;
   color: #b3aca7;
-  
   outline:none;
   cursor: pointer;
-  
   border: solid 1px #b3aca7;
 }
 
@@ -191,7 +145,18 @@ input:hover:focus::-ms-placeholder, textarea:hover::focus:-ms-placeholder {
   width: 90% !important;
 }
 
+.search-patient-label {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
+
 #myInput {
   height: 30px;
   border: 1px solid #b3aca7;
+  width: 92.5%; /* Full-width */
+  font-size: 16px; /* Increase font-size */
+  padding: 12px 20px 12px 40px; /* Add some padding */
+  border: 1px solid #ddd; /* Add a grey border */
+  margin-bottom: 0px; /* Add some space below the input */
 }

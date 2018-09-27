@@ -10,50 +10,56 @@
     <% } %>  <% if (deleted) { %>
         <p>Record successfully deleted!</p>
     <% } %>
-
-    <div class="">
-        <h2>Patient Details:</h2>
-        <p><%= patient.last_name %>, <%= patient.first_name %></p>
+    <div class="detail-container">
+        <div class="">
+            <h2>Patient Details:</h2>
+            <p><%= patient.last_name %>, <%= patient.first_name %></p>
+        </div>
+        
+        <div class="">
+            <form class="" method="POST" action="/patient/<%= patient.id %>/analyze">
+                <input type="hidden" name="lastName" value="<%= patient.last_name %>">
+                <input type="hidden" name="firstName" value="<%= patient.first_name %>">
+                <button>Analyze Keywords</button>
+            </form>
+            <form id="delete" action="/patient/<%= patient.id %>" method="POST" >
+                <input type="hidden" name="_method" value="DELETE">
+                <button>Delete Patient</button>
+            </form>
+        </div>
     </div>
-
-    <div class="">
-        <form class="" method="POST" action="/patient/<%= patient.id %>/analyze">
-            <button>Analyze Keywords</button>
-        </form>
-        <form id="delete" action="/patient/<%= patient.id %>" method="POST" >
-            <input type="hidden" name="_method" value="DELETE">
-            <button>Delete Patient</button>
-        </form>
-    </div>
-    <div>
-        <h2>Add A New Patient Record</h2>
-        <form class=""  method="POST" action="/record">
-        <input id="" type="hidden" name="patient_id" value="<%= patient.id %>">
-            <label for="">Record Title<input id="" type="text" placeholder="" name="title" required></label>
-            <label for="">Description<textarea id="" type="text" placeholder="" name="description" required></textarea></label>
-            <button>Submit</button>
-        </form>
-    </div>
+        
+<div>
+    <h2>Add A New Patient Record</h2>
+    <form class=""  method="POST" action="/record">
+       <input id="" type="hidden" name="patient_id" value="<%= patient.id %>">
+        <label for="">Record Title<input id="" type="text" placeholder="" name="title" required></label>
+        <label for="">Description<textarea id="" placeholder="" name="description" required></textarea></label>
+        <button>Submit</button>
+    </form>
+</div>
 
     <div>
         <h2>Patient's Records</h2>
-        <ul>
-            <li>
-                <span>DATE</span>
-                <span>TITLE</span>
-            </li>
+        <p class="search-patient-label">
+            <span>DATE</span>
+            <span>TITLE</span>
+        </p>
+        <ul id="patient-list">
             <% records.forEach( record => {  %>
                 <li>
                     <a href="/record/<%= patient.id %>/<%= record.id %>">
-                    <span><%= record.date %></span>
-                    <span><%= record.title %></span>
+                    <p class="search-patient-label">
+                        <span><%= record.date %></span>
+                        <span><%= record.title %></span>
+                    </p>
                     </a>
                 </li>
             <% }) %>
         </ul>
     </div>
 
-    <script src="../scripts/patient.js"></script>
+    <script src="/scripts/delete.js"></script>
     <%- include('../partials/footer'); %>
 </body>
 </html>

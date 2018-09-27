@@ -1,0 +1,26 @@
+header nav ul li .sub-menu:before {
+  content: "\f0d7";
+  font-family: fontAwesome;
+  line-height: 50px;
+  color: #fff;
+  right: 5px;
+}
+
+header nav ul li.active .sub-menu:before {
+  content: "\f0d8";
+}
+
+header nav ul li a:hover,
+header nav ul li a.active {
+  color: #fff;
+  background: #E80000;
+}
+
+.input:hover {
+  background: #b3aca7;
+  color: #e2dedb;
+}
+
+#patient-list li a:hover:not(.header) {
+  background-color: #eee; /* Add a hover effect to all links, except for headers */
+}

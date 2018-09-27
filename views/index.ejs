@@ -5,8 +5,7 @@
 <body>
   <%- include('partials/header'); %>
   <main class="site-content">
-
-    <div class="form-container">
+    <div id="add-patient" class="form-container index-div-height">
       <div class="page-header">
         <h2>Add A New Patient</h2>
       </div>
@@ -18,23 +17,24 @@
         </div>
       </form>
     </div>
-    <span class="floatedOr"><h3>or</h3></span>
     <span class="floated-title grab-span"><h2>Search Existing Patient</h2></span>    
-    <div class="under-form">
-      <input type="text" id="myInput" class="input" onkeyup="myFunction()" placeholder="Search for patient names..">
+    <div  id="search-patient" class="under-form">
+      <input type="text" id="myInput" class="input" onkeyup="filterPatients()" placeholder="Search for patient names..">
       <h2>Patients</h2>
+      <p class="search-patient-label">
+        <span>ID</span>
+        <span>Last</span>
+        <span>First</span>
+      </p>
       <ul id="patient-list">
-        <li>
-          <span>ID</span>
-          <span>Last</span>
-          <span>First</span>
-        </li>
         <% patients.forEach( patient => {  %>
           <li>
             <a href="/patient/<%= patient.id %>"> 
-            <span><%= patient.id %></span>
-            <span><%= patient.last_name %></span>
-            <span><%= patient.first_name %></span> 
+              <p class="search-patient-label">
+                <span><%= patient.id %></span>
+                <span><%= patient.last_name %></span>
+                <span><%= patient.first_name %></span> 
+              </p>
             </a>
           </li>
         <% }) %>
