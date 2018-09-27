@@ -4,6 +4,9 @@
 
 <body>
   <%- include('partials/header'); %>
+  <% if (deleted) { %>
+    <p>Patient successfully deleted!</p>
+  <% } %>
   <main class="site-content">
     <div id="add-patient" class="form-container index-div-height">
       <div class="page-header">

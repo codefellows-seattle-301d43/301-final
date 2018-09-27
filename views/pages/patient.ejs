@@ -18,7 +18,7 @@
 	<div class="patient-container">
 		<div class="patient-detail-container">
 			<div class="one">
-				<h3>Patient Details:</h3>
+				<h3>Patient Name:</h3>
 				<p>
 					<%= patient.last_name %>,
 					<%= patient.first_name %>
@@ -40,7 +40,7 @@
 					<input class="input" type="hidden" name="patient_id" value="<%= patient.id %>">
 					<input class="input record-title"	 type="text" placeholder="Record Title" name="title" required>
 					<textarea id="textarea" class="input"placeholder="Description" name="description" required></textarea>
-					<button class="submit">Submit</button>
+					<button class="submit submit-center">Submit</button>
 				</form>
 			</div>
 		</div>
@@ -69,7 +69,7 @@
 
 		<form id="delete" action="/patient/<%= patient.id %>" method="POST">
 			<input type="hidden" name="_method" value="DELETE">
-			<button class="submit">Delete Patient</button>
+			<button class="submit submit-center">Delete Patient</button>
 		</form>
 	</div>
 	<script src="/scripts/delete.js"></script>

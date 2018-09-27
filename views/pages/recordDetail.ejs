@@ -3,21 +3,21 @@
   <%- include('../partials/head', {title: 'Record Detail'}); %>
 <body>
   <%- include('../partials/header'); %>
-  <a class="submit back" href="/patient/<%= patient_id %>">← Back</a>
   <% if (added) { %>
     <p>Record successfully added!</p>
   <% } %>
-  <main>
+  <main class="recordD-main">
+    <a class="submit back" href="/patient/<%= patient_id %>">← Back</a>
     <section id="details">
       <span><%= record.date %></span>
       <h2><%= record.title %></h2>
       <p><%= record.description %></p>
     </section>
     <section>
-        <form id="delete" action="/record/<%= record.id %>" method="POST" >
-          <input type="hidden" name="_method" value="DELETE">
-          <input type="hidden" name="patientId" value="<%= patient_id %>">
-          <button class="submit">Delete</button>
+      <form id="deleteRec" action="/record/<%= record.id %>" method="POST" >
+        <input type="hidden" name="_method" value="DELETE">
+        <input type="hidden" name="patientId" value="<%= patient_id %>">
+        <button class="submit">Delete</button>
       </form>
     </section>
   </main>
