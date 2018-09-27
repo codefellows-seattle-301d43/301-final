@@ -8,7 +8,6 @@ function filterPatients() {
   // Loop through all list items, and hide those who don't match the search query
   for (i = 0; i < li.length; i++) {
     a = li[i].getElementsByTagName('span')[1];
-    console.log('a', a);
     if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
       li[i].style.display = '';
     } else {
@@ -16,4 +15,8 @@ function filterPatients() {
     }
   }
 }
+
+$('#myInput').on('input', filterPatients);
+
+
 
