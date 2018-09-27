@@ -161,3 +161,24 @@ i.watermellon {
   margin-bottom: 0px; /* Add some space below the input */
 }
 
+.keyword {
+  list-style-type: none;
+  background-color: #eeeeee;
+  border-radius: 25px;
+  display: inline-block;
+  padding: 6px;
+  margin: 5px;
+  border: 1px solid gray;
+}
+
+.keyword:nth-child(-n+5) {
+  background-color: rgb(49, 224, 49);
+  transform: scale(1.1);
+  display: block;
+  width: max-content;
+  margin: 8px;
+}
+
+.keyword-header {
+  margin-left: 3%;
+}
