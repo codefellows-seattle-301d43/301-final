@@ -35,7 +35,7 @@ header nav ul li a {
 }
 
 i.watermellon {
-  color: #E80000;
+  color: rgb(201, 54, 58);
 }
 
 .site-content {
@@ -85,8 +85,26 @@ i.watermellon {
   color: #E80000; 
 }
 
-input.input {
+.detail-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.input {
   background-color: white;
+  font-family: Lato, sans-serif;
+  font-size: 0.875em;
+  width: 400px;
+  height: 50px;
+  color: rgb(114, 102, 89);
+  padding: 0px 15px;
+  outline: none;
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgb(179, 172, 167);
+  border-image: initial;
+  transition: all 0.3s ease-in-out 0s;
 }
 
 .floated-title {
@@ -127,10 +145,16 @@ input.input {
   width: 90% !important;
 }
 
+.search-patient-label {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
+
 #myInput {
   height: 30px;
   border: 1px solid #b3aca7;
-  width: 89%; /* Full-width */
+  width: 92.5%; /* Full-width */
   font-size: 16px; /* Increase font-size */
   padding: 12px 20px 12px 40px; /* Add some padding */
   border: 1px solid #ddd; /* Add a grey border */

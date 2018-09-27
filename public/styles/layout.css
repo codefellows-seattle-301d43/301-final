@@ -27,6 +27,12 @@ header nav ul li .sub-menu:before {
   display: none;
 }
 
+form {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
 div.menu-toggle-two {
   display: none;
 }
@@ -84,9 +90,15 @@ div.under-form h2 {
   header {
     padding: 0 20px;
   }
+
+  #myInput {
+    width: 80%;
+  }
+
   .menu-toggle {
     display: block;
   }
+  
   header nav {
     position: absolute;
     width: 100%;
@@ -129,7 +141,7 @@ div.under-form h2 {
   }
 
   #myInput {
-    width: 60%;
+    width: 91%;
     height: 30px;
     border: 1px solid #b3aca7;
   }

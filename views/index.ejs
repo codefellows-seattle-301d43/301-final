@@ -21,7 +21,7 @@
     <div  id="search-patient" class="under-form">
       <input type="text" id="myInput" class="input" onkeyup="filterPatients()" placeholder="Search for patient names..">
       <h2>Patients</h2>
-      <p>
+      <p class="search-patient-label">
         <span>ID</span>
         <span>Last</span>
         <span>First</span>
@@ -30,9 +30,11 @@
         <% patients.forEach( patient => {  %>
           <li>
             <a href="/patient/<%= patient.id %>"> 
-            <span><%= patient.id %></span>
-            <span><%= patient.last_name %></span>
-            <span><%= patient.first_name %></span> 
+              <p class="search-patient-label">
+                <span><%= patient.id %></span>
+                <span><%= patient.last_name %></span>
+                <span><%= patient.first_name %></span> 
+              </p>
             </a>
           </li>
         <% }) %>
