@@ -91,51 +91,16 @@ const analyzeRecord = (req, res) => {
   let SQL = 'SELECT id, title, description FROM records WHERE patient_id = $1;';
   console.log(req.body.lastName, req.body.firstName);
   let values = [req.params.patientId];
-  client.query(SQL, values, (err, apiResponse) => {
+  client.query(SQL, values, (err, data) => {
     if(err) {
-      console.log(err);
-      res.render('pages/error', {message: 'poop'});
+      res.render('pages/error', {message: err});
     } else {
-      let analysisData = apiResponse.rows.map(data => {
+      let analysisData = data.rows.map(data => {
+        //Format the data to acceptable params for MSFT API
         return {language: 'en', id: data.id, text: `${data.title} ${data.description}` };
       });
 
       let reqData = {documents: analysisData };
-<<<<<<< HEAD
-
-      superagent.post('https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/keyPhrases')
-        .set('Ocp-Apim-Subscription-Key', authKey)
-        .set('Accept', 'application/json')
-        .set('Content-Type', 'application/json')
-        .send(reqData)
-        .then(responseData => {
-          let phraseList = JSON.parse(responseData.text).documents;
-
-          // **** !!!DO NOT DELETE!!! Slow filter, will optimize later. !!!DO NOT DELETE!!! ****
-          //
-          // let filterList = ['day', 'week', 'days', 'weeks', 'month', 'months', 'year', 'years'];
-          // phraseList.map(data => data.keyPhrases.filter(symptom => {
-          //   filterList.push(symptom);
-          //   return !filterList.includes(symptom);
-          // }));
-
-          let allPhrasesFromRecords = phraseList.reduce((total,phraseList) => total.concat(phraseList.keyPhrases),[]);
-          let allPhrasesSet = new Set(allPhrasesFromRecords);
-
-          //Find all repeated words
-          let allPhrases = Array.from(allPhrasesSet);
-
-          let mostFrequentPhrases = allPhrases.map((phrase) => {
-            let count = 0;
-            for(let i=0; i < allPhrasesFromRecords.length; i++){
-              if(allPhrasesFromRecords[i] === phrase) count++;
-            }
-            return {name: phrase, total: count};
-          }).filter(term => term.total > 1).map(word => word.name);
-
-          res.render('pages/keyPhrases', {phrases: mostFrequentPhrases});
-        });
-=======
       if (reqData.documents.length === 0) {
         res.render('pages/keyPhrases', {phrases: ['Patient has no records to analyze'], patient_id: req.params.patientId});
       } else {
@@ -144,11 +109,18 @@ const analyzeRecord = (req, res) => {
           .set('Accept', 'application/json')
           .set('Content-Type', 'application/json')
           .send(reqData)
-          .then(responseData => {
-            let phraseList = JSON.parse(responseData.text).documents;
+          .then(apiResponse => {
+            let phraseList = JSON.parse(apiResponse.text).documents;
 
             let allPhrasesFromRecords = phraseList.reduce((total,phraseList) => total.concat(phraseList.keyPhrases),[]);
             let allPhrasesSet = new Set(allPhrasesFromRecords);
+
+            // Temp method for !!efficiency
+            let obj = {};
+            allPhrasesFromRecords.forEach(num => obj[num] ? obj[num]++ : obj[num] = 1);
+            let sorted = Object.keys(obj).sort((a, b) => {
+              return obj[a] < obj[b];
+            });
 
             //Find all repeated words
             let allPhrases = Array.from(allPhrasesSet);
@@ -164,7 +136,6 @@ const analyzeRecord = (req, res) => {
             res.render('pages/keyPhrases', {phrases: mostFrequentPhrases, patient_id: req.params.patientId});
           });
       }
->>>>>>> master
     }
   });
 };
