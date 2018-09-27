@@ -3,6 +3,7 @@
 <%- include('../partials/head', {title: 'Key Phrases'}); %>
 <body>
   <%- include('../partials/header'); %>
+  <a class="submit back" href="/patient/<%= patient_id %>">← Back</a>
   <h1 class="keyword-header">Key Phrases:</h1>
   <main>
       <ul class="keyword-list">
@@ -11,7 +12,6 @@
         <% }) %>
       </ul>
   </main>
-  <a href="/patient/<%= patient_id %>">Back</a>
   <%- include('../partials/footer'); %>
 </body>
 </html>
