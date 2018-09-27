@@ -174,11 +174,19 @@ i.watermellon {
 .keyword:nth-child(-n+5) {
   background-color: rgb(49, 224, 49);
   transform: scale(1.1);
-  display: block;
   width: max-content;
   margin: 8px;
 }
 
 .keyword-header {
+  margin-left: 3%;
+}
+
+.back {
+  height: 20px;
+  width: 100px;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
   margin-left: 3%;
 }
