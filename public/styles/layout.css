@@ -76,9 +76,9 @@ div.under-form h2 {
   display: none;
 }
 
-div.under-form #patient-list {
+/* div.under-form #patient-list {
   display: none
-}
+} */
 
 #myInput {
   width: 65%;
@@ -127,8 +127,6 @@ div.under-form #patient-list {
 @media (min-width: 1250px) {
 
   main.site-content {
-    display: flex;
-    justify-content: center;
     width: 60%;
     margin: 0 auto;
   }
@@ -152,12 +150,6 @@ div.under-form #patient-list {
     justify-content: center;
     margin-left: 45px;
     margin-bottom: 0px;
-  }
-
-  .floated-title {
-    bottom: 432px;
-    position: absolute;
-    right: 300px;
   }
 }
 
