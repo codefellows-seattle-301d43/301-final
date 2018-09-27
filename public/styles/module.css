@@ -2,12 +2,56 @@ h2{
   font-family: 'Graduate', cursive;
 }
 
+header .logo   {
+  color: #fff;
+  height: 50px;
+  line-height: 50px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+header nav ul {
+  margin: 0;
+  padding: 0;
+}
+
+header nav ul li {
+  list-style: none;
+}
+
+header nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  padding: 0 20px;
+  height: 50px;
+  line-height: 50px;
+  display: block;
+}
+
+.inputs-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 i.watermellon {
   color: #E80000;
 }
 
 .site-content {
   flex: 1;
+}
+
+#lab_social_icon_footer a {
+  color: #f1f1f1;
+  font-size: 15px;
+}
+
+.text-center {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 10px;
 }
 
 .show {
@@ -17,8 +61,24 @@ i.watermellon {
 
 #patient-list {
   text-align: center;
-  width: 95%;
-  margin: 0 auto;
+  width: 100%;
+  margin-top: 0;
+  margin-bottom: 50px;
+  list-style-type: none;
+  padding: 0;
+  height: 400px;
+  background-color: #f6f6f6; 
+}
+
+#patient-list li a {
+  border: 1px solid #ddd; /* Add a border to all links */
+  margin-top: -1px; /* Prevent double borders */
+  background-color: #f6f6f6; /* Grey background color */
+  padding: 12px; /* Add some padding */
+  text-decoration: none; /* Remove default text underline */
+  font-size: 18px; /* Increase the font-size */
+  color: black; /* Add a black text color */
+  display: block; /* Make it into a block element to fill the whole list */
 }
 
 .red {
@@ -70,4 +130,9 @@ input.input {
 #myInput {
   height: 30px;
   border: 1px solid #b3aca7;
+  width: 89%; /* Full-width */
+  font-size: 16px; /* Increase font-size */
+  padding: 12px 20px 12px 40px; /* Add some padding */
+  border: 1px solid #ddd; /* Add a grey border */
+  margin-bottom: 0px; /* Add some space below the input */
 }

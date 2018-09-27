@@ -19,14 +19,14 @@
     </div>
     <span class="floated-title grab-span"><h2>Search Existing Patient</h2></span>    
     <div  id="search-patient" class="under-form">
-      <input type="text" id="myInput" class="input" onkeyup="myFunction()" placeholder="Search for patient names..">
+      <input type="text" id="myInput" class="input" onkeyup="filterPatients()" placeholder="Search for patient names..">
       <h2>Patients</h2>
+      <p>
+        <span>ID</span>
+        <span>Last</span>
+        <span>First</span>
+      </p>
       <ul id="patient-list">
-        <li>
-          <span>ID</span>
-          <span>Last</span>
-          <span>First</span>
-        </li>
         <% patients.forEach( patient => {  %>
           <li>
             <a href="/patient/<%= patient.id %>"> 
