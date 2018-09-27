@@ -15,7 +15,6 @@ const superagent = require('superagent');
 
 
 const getIndex = (req, res) => {
-  console.log('im at index woohoo');
   res.redirect('/patient');
 };
 
@@ -37,7 +36,6 @@ const getPatients = (req, res) => {
 
 
 const getAbout = (req, res) => {
-  console.log('about us, boring..');
   res.render('pages/about');
 };
 
@@ -89,7 +87,6 @@ const recordInfo = (req, res) => {
 
 const analyzeRecord = (req, res) => {
   let SQL = 'SELECT id, title, description FROM records WHERE patient_id = $1;';
-  console.log(req.body.lastName, req.body.firstName);
   let values = [req.params.patientId];
   client.query(SQL, values, (err, data) => {
     if(err) {
@@ -159,7 +156,6 @@ const newPatient = (req, res) => {
 
 
 const newRecord = (req, res) => {
-  console.log('new record, plz no big bills');
   let SQL = 'INSERT INTO records (patient_id, title, description) VALUES ($1, $2, $3) ON CONFLICT DO NOTHING RETURNING id';
   let values = [req.body.patient_id, req.body.title, req.body.description];
   client.query(SQL, values, (err, serverRes) => {
