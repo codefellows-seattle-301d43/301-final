@@ -13,7 +13,7 @@
       <p><%= record.description %></p>
     </section>
     <section>
-        <form id="delete" action="/record/<%= record.id %>" method="POST" >
+        <form id="deleteRec" action="/record/<%= record.id %>" method="POST" >
           <input type="hidden" name="_method" value="DELETE">
           <input type="hidden" name="patientId" value="<%= patient_id %>">
           <button>Delete</button>
