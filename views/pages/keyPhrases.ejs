@@ -3,11 +3,11 @@
 <%- include('../partials/head', {title: 'Key Phrases'}); %>
 <body>
   <%- include('../partials/header'); %>
-  <h1>Key Phrases:</h1>
+  <h1 class="keyword-header">Key Phrases:</h1>
   <main>
-      <ul>
+      <ul class="keyword-list">
         <% phrases.forEach( phrase => {  %>
-          <li><%= phrase %></li>
+          <li class="keyword"><%= phrase %></li>
         <% }) %>
       </ul>
   </main>
