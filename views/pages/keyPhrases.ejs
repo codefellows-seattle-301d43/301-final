@@ -5,7 +5,7 @@
   <%- include('../partials/header'); %>
   <a class="submit back" href="/patient/<%= patient_id %>">← Back</a>
   <h1 class="keyword-header">Key Phrases:</h1>
-  <main>
+  <main class="kp-main">
       <ul class="keyword-list">
         <% phrases.forEach( phrase => {  %>
           <li class="keyword"><%= phrase %></li>
