@@ -101,11 +101,11 @@ div.two {
   flex-direction: column;
   align-items: center;
 }
-
+/* 
 #delete {
   position: relative;
   left: 250px;top: -57px;
-}
+} */
 
 .one form {
   display: flex;
@@ -134,6 +134,7 @@ input #patient-id {
 
 .one-form {
   margin: 0 auto;
+  width: 90%;
 }
 
 #textarea {
@@ -215,6 +216,10 @@ input #patient-id {
     justify-content: center;
     margin-left: 45px;
     margin-bottom: 0px;
+  }
+
+  .input {
+    width: 400px;
   }
 }
 

@@ -61,8 +61,8 @@ i.watermellon {
 
 #patient-list {
   text-align: center;
-  width: 100%;
-  margin-top: 0;
+  width: 90%;
+  margin: 0 auto;
   margin-bottom: 50px;
   list-style-type: none;
   padding: 0;
@@ -71,7 +71,7 @@ i.watermellon {
 }
 
 #patient-list li a {
-  border: 1px solid #ddd; /* Add a border to all links */
+  border: 1px solid #7d7d6e; /* Add a border to all links */
   margin-top: -1px; /* Prevent double borders */
   background-color: #f6f6f6; /* Grey background color */
   padding: 12px; /* Add some padding */
@@ -95,7 +95,7 @@ i.watermellon {
   background-color: white;
   font-family: Lato, sans-serif;
   font-size: 0.875em;
-  width: 400px;
+  width: 97%;
   height: 50px;
   color: rgb(114, 102, 89);
   padding: 0px 15px;
@@ -174,11 +174,19 @@ i.watermellon {
 .keyword:nth-child(-n+5) {
   background-color: rgb(49, 224, 49);
   transform: scale(1.1);
-  display: block;
   width: max-content;
   margin: 8px;
 }
 
 .keyword-header {
+  margin-left: 3%;
+}
+
+.back {
+  height: 20px;
+  width: 100px;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
   margin-left: 3%;
 }
