@@ -206,8 +206,14 @@ ul li a:hover {
 .recordD-main {
   position: absolute;
   bottom: 30%;
+  height: 100vh;
 }
 
 .active {
   background-color: #c9363a;
+}
+
+.kp-main {
+  height: 100vh;
+  overflow-y: scroll;
 }
