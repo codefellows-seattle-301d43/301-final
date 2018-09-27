@@ -97,3 +97,5 @@ More detailed information about the API can be found here: (https://docs.microso
 
 >### Credits and Collaborations
 Microsoft Text Analytics Key Phrases API
+
+Sample chart notes (https://www.med.unc.edu/medselect/resources/sample-notes)
