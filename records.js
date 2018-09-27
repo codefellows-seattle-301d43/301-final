@@ -112,9 +112,7 @@ const analyzeRecord = (req, res) => {
             let allPhrasesFromRecords = phraseList.reduce((total,phraseList) => total.concat(phraseList.keyPhrases),[]);
             let allPhrasesSet = new Set(allPhrasesFromRecords);
 
-            // Temp method for !!efficiency
-            let obj = {};
-            let filterList = [req.body.firstName, req.body.lastName, 'year', 'years', 'day', 'days', 'month', 'months', 'home', 'year-old gentleman'];
+            let filterList = [req.body.firstName, req.body.lastName, 'year', 'years', 'day', 'days', 'month', 'months', 'home', 'year-old gentleman', 'yo woman', 'woman', 'man'];
 
 
             //Find all repeated words
@@ -127,10 +125,9 @@ const analyzeRecord = (req, res) => {
               }
               return {name: phrase, total: count};
             }).sort((a,b) => b.total - a.total).filter(item => !filterList.includes(item.name));
-            
+
             let formattedPhraseList = mostFrequentPhrases.map(word => `${word.name} (${word.total})`);
-            console.log(mostFrequentPhrases);
-            res.render('pages/keyPhrases', {phrases: formattedPhraseList, patient_id: req.params.patientId});
+            res.render('pages/keyPhrases', {phrases: formattedPhraseList, patient_id: req.params.patientId, topPhrases: mostFrequentPhrases});
           });
       }
     }
