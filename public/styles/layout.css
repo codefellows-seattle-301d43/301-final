@@ -56,24 +56,12 @@ footer {
   align-items: center;
 }
 
-.floatedOr {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .centered-form {
   flex-direction: column;
 }
 
 div.under-form h2 {
   display: none;
-}
-
-.center-existing {
-  display: flex;
-  justify-content: center;
-  position: none;
 }
 
 @media (max-width: 991px) {
@@ -130,14 +118,6 @@ div.under-form h2 {
     width: 60%;
     height: 30px;
     border: 1px solid #b3aca7;
-  }
-
-  .floatedOr {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-left: 45px;
-    margin-bottom: 0px;
   }
 
   .floated-title {
