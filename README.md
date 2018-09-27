@@ -40,13 +40,12 @@ As a User: Navigate to (http://medwords.info/), select a patient or create a new
 
 >### Microsoft Text Analytics Key Phrases API (requires key)
 * **POST /westus.api.cognitive.microsoft.comtext/analytics/v2.0/** - 
----
-var documents = { 'documents': [
+
+```var documents = { 'documents': [
     { 'id': '1', 'text': 'This is a document written in English.' },
     { 'id': '2', 'text': 'Este es un document escrito en Español.' },
     { 'id': '3', 'text': '这是一个用中文写的文件' }
-]};
----
+]};```
 
 More detailed information about the API can be found here: (https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/quickstarts/nodejs)
 
