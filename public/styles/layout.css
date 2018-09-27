@@ -86,6 +86,62 @@ div.under-form h2 {
   position: none;
 }
 
+/* demonstration css */
+.patient-detail-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-left: 67px;
+  margin-right: 160px;
+}
+
+div.two {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+#delete {
+  position: relative;
+  left: 250px;top: -57px;
+}
+
+.one form {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  margin: 0 auto;
+}
+
+input #patient-id {
+  width: 80%;
+}
+
+.record-title {
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+#textarea {
+  padding: 10px;
+  width: 100%;
+}
+
+.center {
+  text-align: center;
+}
+
+.one-form {
+  margin: 0 auto;
+}
+
+#textarea {
+  width: 100%;
+  height: 200px;
+  margin-bottom: 15px;
+}
+
 @media (max-width: 991px) {
   header {
     padding: 0 20px;
@@ -126,19 +182,26 @@ div.under-form h2 {
     width: 100%;
   }
 }
-@media (min-width: 1250px) {
+@media (min-width: 760px) {
 
+  .patient-detail-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-left: 67px;
+    margin-right: 45px;
+  }
+
+  div.patient-records-container {
+    width: 90%;
+    margin: 0 auto;
+  }
+  
   main.site-content {
     width: 60%;
     margin: 0 auto;
   }
-  
-  div.form-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
+
 
   #myInput {
     width: 91%;
