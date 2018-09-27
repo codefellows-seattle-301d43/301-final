@@ -27,16 +27,19 @@ As a User: Navigate to (http://medwords.info/), select a patient or create a new
 >### Database Schema
 ![image info](./img/schema.png)
 
->### API and Site Endpoints
-* **GET /** - This route takes you to our index
-* **GET /about** - This route takes us to the about us page
-* **GET /patient/:patientId** - This route will take you a patient's details
-* **GET /record/:recordId** -  This route will take you to a patient's record details
-* **GET /patient/:patientId/analyze** - This route will give keywords from all of the patient's records
+>### Site Endpoints
+* **GET /** - This route redirects the user to the '/patient' main page
+* **GET /about** - This route renders the About page
+* **GET /patient/:patientId** - This route queries the site DB for the patient's demographic info and records. It then renders the Patient Detail Page with the information retrieved from the DB.
+* **GET /record/:patientId/:recordId** -  This route queries the database for a specific record's details and renderst the Record Detail Page.
+* **GET /patient/:patientId/analyze** - This route sends a POST request to the MSFT Text Analytics Key Phrases API with all of a patient's record title+descriptions. 
 * **POST /patient** - Insert a new patient to database and redirect to patient details page and give success message
 * **POST /record** - This route will insert a new record into the database
 * **DELETE /patient/:patientId** - This route will delete a patient and their records from the database
 * **DELETE /record/:recordId** - This route will delete a record from the database
+
+>### Microsoft Text Analytics Key Phrases Endpoint
+* **POST /** - This route takes you to our index
 
 >### Credits and Collaborations
 put those here
