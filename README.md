@@ -40,12 +40,52 @@ As a User: Navigate to (http://medwords.info/), select a patient or create a new
 
 >### Microsoft Text Analytics Key Phrases API (requires key)
 * **POST /westus.api.cognitive.microsoft.comtext/analytics/v2.0/** - 
+Include a header:  'Ocp-Apim-Subscription-Key' = YOUR_KEY
 
-```var documents = { 'documents': [
-    { 'id': '1', 'text': 'This is a document written in English.' },
-    { 'id': '2', 'text': 'Este es un document escrito en Español.' },
-    { 'id': '3', 'text': '这是一个用中文写的文件' }
-]};```
+Post body should be formatted as follows: 
+```documents = { 'documents': [
+    { 'id': '1', 'language': 'en', 'text': 'I really enjoy the new XBox One S. It has a clean look, it has 4K/HDR resolution and it is affordable.' },
+    { 'id': '2', 'language': 'es', 'text': 'Si usted quiere comunicarse con Carlos, usted debe de llamarlo a su telefono movil. Carlos es muy responsable, pero necesita recibir una notificacion si hay algun problema.' },
+    { 'id': '3', 'language': 'en', 'text': 'The Grand Hotel is a new hotel in the center of Seattle. It earned 5 stars in my review, and has the classiest decor I\'ve ever seen.' }
+]};
+```
+
+Example response:
+```{
+   "documents": [
+      {
+         "keyPhrases": [
+            "HDR resolution",
+            "new XBox",
+            "clean look"
+         ],
+         "id": "1"
+      },
+      {
+         "keyPhrases": [
+            "Carlos",
+            "notificacion",
+            "algun problema",
+            "telefono movil"
+         ],
+         "id": "2"
+      },
+      {
+         "keyPhrases": [
+            "new hotel",
+            "Grand Hotel",
+            "review",
+            "center of Seattle",
+            "classiest decor",
+            "stars"
+         ],
+         "id": "3"
+      }
+   ],
+   "errors": [  ]
+}
+```
+
 
 More detailed information about the API can be found here: (https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/quickstarts/nodejs)
 
