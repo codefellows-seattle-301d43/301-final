@@ -119,8 +119,10 @@ const analyzeRecord = (req, res) => {
             let obj = {};
             allPhrasesFromRecords.forEach(num => obj[num] ? obj[num]++ : obj[num] = 1);
             let sorted = Object.keys(obj).sort((a, b) => {
-              return obj[a] < obj[b];
+              return obj[a] - obj[b];
             });
+            console.log(obj);
+            console.log(sorted);
 
             //Find all repeated words
             let allPhrases = Array.from(allPhrasesSet);
