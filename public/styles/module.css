@@ -95,7 +95,7 @@ i.watermellon {
   background-color: white;
   font-family: Lato, sans-serif;
   font-size: 0.875em;
-  width: 97%;
+  width: 200px;
   height: 50px;
   color: rgb(114, 102, 89);
   padding: 0px 15px;
@@ -189,4 +189,8 @@ i.watermellon {
   text-align: center;
   text-decoration: none;
   margin-left: 3%;
+}
+
+.submit-center {
+  margin: 0 auto;
 }
