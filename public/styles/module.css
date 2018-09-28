@@ -241,12 +241,16 @@ ul li a:hover {
   justify-content: space-between;
   margin: 50px 0;
   flex-wrap: wrap;
+  background-color: #cbcbcb;
+  box-sizing: border-box;
+  padding: 25px 10px 0px 10px;
+  border: 1px solid gray;
 }
 
 .team-card {
   text-align: center;
-  margin: 0 auto;
-  height: 350px;
+  margin: 0 auto 20px auto;
+  height: 300px;
 }
 
 .team-card i {
