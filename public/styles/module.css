@@ -197,16 +197,11 @@ ul li a:hover {
   text-align: center;
   text-decoration: none;
   margin-left: 3%;
+  margin-bottom: 20px;
 }
 
 .submit-center {
   margin: 0 auto;
-}
-
-.recordD-main {
-  position: absolute;
-  bottom: 30%;
-  height: 100vh;
 }
 
 .active {
@@ -214,6 +209,13 @@ ul li a:hover {
 }
 
 .kp-main {
+  height: 100vh;
+  overflow-y: scroll;
+}
+
+.rd-main {
+  width: 95%;
+  margin: 0 auto;
   height: 100vh;
   overflow-y: scroll;
 }
