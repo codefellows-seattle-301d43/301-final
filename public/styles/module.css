@@ -2,12 +2,14 @@ h2{
   font-family: 'Graduate', cursive;
 }
 
-header .logo   {
+.logo   {
   color: #fff;
   height: 50px;
   line-height: 50px;
   font-size: 24px;
   font-weight: bold;
+  float: left;
+  margin-left: 1%;
 }
 
 header nav ul {
@@ -68,6 +70,7 @@ i.watermellon {
   padding: 0;
   height: 400px;
   background-color: #f6f6f6; 
+  overflow-y: scroll;
 }
 
 #patient-list li a {
