@@ -2,6 +2,22 @@ INSERT INTO patients(first_name, last_name) VALUES('John', 'Smith');
 
 INSERT INTO patients(first_name, last_name) VALUES('Jane', 'Bingham');
 
+INSERT INTO patients(first_name, last_name) VALUES('Jimmy', 'Nuwen');
+
+INSERT INTO patients(first_name, last_name) VALUES('Mathilda', 'Mccarthy');
+
+INSERT INTO patients(first_name, last_name) VALUES('Devante', 'Hobbs');
+
+INSERT INTO patients(first_name, last_name) VALUES('Deen', 'Adam');
+
+INSERT INTO patients(first_name, last_name) VALUES('Rachelle', 'Lin');
+
+INSERT INTO patients(first_name, last_name) VALUES('Joe', 'Silva');
+
+INSERT INTO patients(first_name, last_name) VALUES('Norah', 'Wheeler');
+
+INSERT INTO patients(first_name, last_name) VALUES('Jimmy', 'Nuwen Jr.');
+
 INSERT INTO records(patient_id, title, description, date) VALUES(1, 'Initial Visit #1', 'Mr. Smith is a 66-year-old gentleman formally followed at Carolina Premier who presents to obtain a new primary care physician secondary to insurance changes. He has a past medical history significant for a myocardial infarction in 1994. His cholesterol has been fine. Catheterization showed a possible "kink" in one of his vessels and it was thought that he had a possible "eddy" of current which led to a clot. He has been on Coumadin since then as well as a calcium channel blocker with the thought that there may have been a superimposed spasm. He has had several unremarkable stress tests since then. He works out on a Nordic-Track three times a week without any chest pain or shortness of breath. He has a history of possible peptic ulcer disease in 1981. He was treated with H2 blockers and his symptoms resolved. He has never had any bleeding to his knowledge. He had a hernia repair bilaterally in 1989 and surgery for a right knee cyst in 1999, all of which went well. He also has about a year long history of right buttock pain. This happens only when he is sitting for some time and does not change position. It does not happen when he is walking or exercising. He wonders if it might be pyriformis syndrome. If he changes positions frequently or stretches his legs, this seems to help. He has no acute complaints today and is here to get plugged into the system. He does wonder if there is anything else that can be done about his buttock pain.', '2006-04-05');
 
 INSERT INTO records(patient_id, title, description, date) VALUES(1, 'Initial Visit #2', 'Mr. Smith is a 66-year-old gentleman new to our Clinic. He had been followed by Dr. Jones at Kernodle Clinic. Mr. Smith has a past medical history that includes hypertension for more than five years. It sounds like he has fairly severe white coat hypertension. Apparently, he has home readings consistently 30 points below what he gets in the office. He had been on Capoten in the past and gotten a cough with that. He had been on Norvasc in the past, but then stopped it for unclear reasons. More recently, he has been on Hyzaar. He also has hypercholesterolemia and has been on Lipitor. He has for the past year or so felt that his hands and feet were "burning up" at night. He reports that "he can almost see the heat waves from them." He thinks this is a medication side effect. On his own, he stopped his Lipitor three weeks ago. He has not noticed any difference in his symptoms. He otherwise feels well and has no complaints.', '2006-5-01');
@@ -16,3 +32,9 @@ INSERT INTO records(patient_id, title, description, date) VALUES(1, 'Post Hospit
 INSERT INTO records(patient_id, title, description, date) VALUES(2, 'Sore Throat', 'Ms. Bingham is a 24 yo woman who complains of worsening sore throat since yesterday morning. She has never had a similar problem in the past. She has no difficulty swallowing, but notes that swallowing makes the pain worse. Nothing makes it better. There is no SOB or sensation of choking or dysphagia. She has fatigue and has had some anorexia since the symptoms began. She has had some subjective fevers at home but has not taken her temperature. She has had no cough or rhinorrhea. There are no sick contacts at home or at work. She denies seasonal allergies and post-nasal drip. ROS: No chest pain, cough, wheezing, abdominal pain, N/V, headache', '2006-04-05');
 
 INSERT INTO records(patient_id, title, description, date) VALUES(2, 'Continued Sore Throat','Ms. Bingham is a 24 yo woman complaining of continued sore throat since April 2006. She has never had a similar problem in the past. She has some difficulty swallowing with pain. No sense of choking or dysphagia. She continues to have fatigue and anorexia. She has not taken her temperature, and has no cough or rhinorrhea. She desnies seasonal allergies and post-nasal drip', '2006-06-12');
+
+INSERT INTO records(patient_id, title, description, date) VALUES(3, 'Veggie deficiency', 'Needs to eat more veggies to cure constipation', '2018-09-26');
+
+INSERT INTO records(patient_id, title, description, date) VALUES(3, 'Continued constipation', 'Patient continues to refuse to eat veggies to combat constipation problems. Laxatives prescribed.', '2018-09-27');
+
+INSERT INTO records(patient_id, title, description, date) VALUES(3, 'Constipation cured', 'Patient released waste weighing at 238 courics (Approx 500 lbs), pending guinness world record', '2018-09-28');

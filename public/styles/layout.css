@@ -1,7 +1,3 @@
-header .logo {
-  float: left;
-}
-
 header nav {
   float: right;
 }
@@ -12,10 +8,6 @@ header nav ul {
 
 header nav ul li {
   position: relative;
-}
-
-header nav ul li .sub-menu:before {
-  position: absolute;
 }
 
 .menu-toggle {
@@ -33,7 +25,7 @@ form {
   margin-bottom: 20px;
 }
 
-div.menu-toggle-two {
+.menu-toggle-two {
   display: none;
 }
 
@@ -72,7 +64,7 @@ footer {
   flex-direction: column;
 }
 
-div.under-form h2 {
+.under-form h2 {
   display: none;
 }
 
@@ -91,17 +83,12 @@ div.under-form h2 {
   margin-right: 160px;
 }
 
-div.two {
+.two {
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
 }
-/* 
-#delete {
-  position: relative;
-  left: 250px;top: -57px;
-} */
 
 .one form {
   display: flex;
@@ -189,12 +176,12 @@ input #patient-id {
     margin-right: 45px;
   }
 
-  div.patient-records-container {
+  .patient-records-container {
     width: 90%;
     margin: 0 auto;
   }
   
-  main.site-content {
+  .site-content {
     width: 60%;
     margin: 0 auto;
   }
