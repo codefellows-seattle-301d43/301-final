@@ -205,7 +205,7 @@ ul li a:hover {
 }
 
 .active {
-  background-color: #c9363a;
+  background-color: #1c1c1c;
 }
 
 .kp-main {
@@ -218,4 +218,8 @@ ul li a:hover {
   margin: 0 auto;
   height: 100vh;
   overflow-y: scroll;
+}
+
+.active-red {
+  background-color: #c9363a;
 }
