@@ -259,6 +259,10 @@ ul li a:hover {
   font-size: 2em;
 }
 
+.team-card a {
+  color: black;
+}
+
 .team-card a:visited {
   text-decoration: none;
   color: black;
