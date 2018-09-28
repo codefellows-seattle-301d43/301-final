@@ -217,5 +217,15 @@ input #patient-id {
   .input {
     width: 400px;
   }
+
+  .patient-container {
+    width: 80%; 
+    margin: 0 auto;
+  }
+
+  .p-main {
+    width: 90%;
+    margin: 0 auto;
+  }
 }
 
