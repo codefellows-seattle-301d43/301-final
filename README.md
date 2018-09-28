@@ -36,7 +36,7 @@ As a User: Navigate to (http://medwords.info/), select a patient or create a new
 * **GET /about** - This route renders the About page
 * **GET /patient/:patientId** - This route queries the site DB for the patient's demographic info and records. It then renders the Patient Detail Page with the information retrieved from the DB.
 * **GET /record/:patientId/:recordId** -  This route queries the database for a specific record's details and renders the Record Detail Page.
-* **GET /patient/:patientId/analyze** - This route sends a POST request to the MSFT Text Analytics Key Phrases API with all of a patient's record title+descriptions. After retrieving the key phrases, it counts the occurrences of each phrase and renders the Key Phrases page.
+* **GET /patient/:patientId/analyze** - This route sends a POST request to the MSFT Text Analytics Key Phrases API with all of a patient's record title+descriptions. After retrieving the key phrases, it counts the occurrences of each phrase and renders the Key Phrases page. The route also makes a PUT request to the site's DB to save the top key phrases in html markup in the patient's row of the DB. When navigating back to the Patient Detail Page, the top key phrases will appear below the patient's name.
 * **POST /patient** - Inserts a new patient to database and redirects to new patient detail page with a success message.
 * **POST /record** - Inserts a new record into the database with the current date and redirects to new record detail page with a success message.
 * **DELETE /patient/:patientId** - This route will delete a patient and their records from the database and redirect to the main page with a success message.
@@ -44,7 +44,7 @@ As a User: Navigate to (http://medwords.info/), select a patient or create a new
 
 >### Microsoft Text Analytics Key Phrases API (requires key)
 * **POST /westus.api.cognitive.microsoft.comtext/analytics/v2.0/** - 
-Include a header:  'Ocp-Apim-Subscription-Key' = YOUR_KEY
+* Include a header:  'Ocp-Apim-Subscription-Key' = YOUR_KEY
 
 Post body should be formatted as follows: 
 ```
