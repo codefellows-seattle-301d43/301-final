@@ -68,6 +68,7 @@ i.watermellon {
   padding: 0;
   height: 400px;
   background-color: #f6f6f6; 
+  overflow-y: scroll;
 }
 
 #patient-list li a {
