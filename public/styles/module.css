@@ -74,7 +74,6 @@ i.watermellon {
   border: 1px solid #7d7d6e; /* Add a border to all links */
   margin-top: -1px; /* Prevent double borders */
   background-color: #f6f6f6; /* Grey background color */
-  padding: 12px; /* Add some padding */
   text-decoration: none; /* Remove default text underline */
   font-size: 18px; /* Increase the font-size */
   color: black; /* Add a black text color */
@@ -205,7 +204,7 @@ ul li a:hover {
 }
 
 .active {
-  background-color: #c9363a;
+  background-color: #1c1c1c;
 }
 
 .kp-main {
@@ -218,4 +217,8 @@ ul li a:hover {
   margin: 0 auto;
   height: 100vh;
   overflow-y: scroll;
+}
+
+.active-red {
+  background-color: #c9363a;
 }

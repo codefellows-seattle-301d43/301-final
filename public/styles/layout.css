@@ -54,7 +54,7 @@ footer {
 }
 
 .under-form {
-  width: 85%;
+  width: 100%;
   margin: 0 auto;
   display: flex;
   justify-content: center;
@@ -74,10 +74,6 @@ footer {
 
 div.under-form h2 {
   display: none;
-}
-
-#myInput {
-  width: 65%;
 }
 
 .center-existing {
@@ -149,7 +145,7 @@ input #patient-id {
   }
 
   #myInput {
-    width: 80%;
+    width: 60%;
   }
 
   .menu-toggle {
@@ -205,7 +201,7 @@ input #patient-id {
 
 
   #myInput {
-    width: 91%;
+    width: 82%;
     height: 30px;
     border: 1px solid #b3aca7;
   }
@@ -220,6 +216,16 @@ input #patient-id {
 
   .input {
     width: 400px;
+  }
+
+  .patient-container {
+    width: 80%; 
+    margin: 0 auto;
+  }
+
+  .p-main {
+    width: 90%;
+    margin: 0 auto;
   }
 }
 
