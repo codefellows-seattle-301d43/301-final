@@ -4,8 +4,16 @@
   </div></a>
   <nav>
     <ul>
-      <li><a href="/patient" class="active-red">home</a></li>
-      <li><a href="/about">about us</a></li>
+      <% if (location === 'home') { %>
+        <li><a href="/patient" class="active-red">home</a></li>
+        <li><a href="/about">about us</a></li>
+      <% } else if (location === 'about') { %>
+        <li><a href="/patient">home</a></li>
+        <li><a href="/about" class="active-red">about us</a></li>
+      <% } else { %>
+        <li><a href="/patient">home</a></li>
+        <li><a href="/about">about us</a></li>
+      <% } %>
     </ul>
   </nav>
   <div class="menu-toggle menu-toggle-one"><i class="fa fa-bars" aria-hidden="true"></i></div>

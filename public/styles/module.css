@@ -225,3 +225,55 @@ ul li a:hover {
 .active-red {
   background-color: #c9363a;
 }
+
+.team-image {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin: 0 auto;
+}
+
+.image-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin: 50px 0;
+  flex-wrap: wrap;
+  background-color: #cbcbcb;
+  box-sizing: border-box;
+  padding: 25px 10px 0px 10px;
+  border: 1px solid gray;
+}
+
+.team-card {
+  text-align: center;
+  margin: 0 auto 20px auto;
+  height: 300px;
+}
+
+.team-card i {
+  font-size: 2em;
+}
+
+.team-card a:visited {
+  text-decoration: none;
+  color: black;
+}
+
+.tre {
+  background-image: url('../assets/tre.jpeg');
+}
+
+.jeff {
+  background-image: url('../assets/jeff.jpg');
+}
+
+.ken {
+  background-image: url('../assets/kendra.jpg');
+}
+
+.aaron {
+  background-image: url('../assets/aaron.jpg');
+}
