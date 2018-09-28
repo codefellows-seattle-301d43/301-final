@@ -210,6 +210,7 @@ ul li a:hover {
 
 .active {
   background-color: #1c1c1c;
+  z-index: 100;
 }
 
 .kp-main {
