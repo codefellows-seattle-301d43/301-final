@@ -240,6 +240,21 @@ ul li a:hover {
   flex-wrap: wrap;
 }
 
+.team-card {
+  text-align: center;
+  margin: 0 auto;
+  height: 350px;
+}
+
+.team-card i {
+  font-size: 2em;
+}
+
+.team-card a:visited {
+  text-decoration: none;
+  color: black;
+}
+
 .tre {
   background-image: url('../assets/tre.jpeg');
 }
