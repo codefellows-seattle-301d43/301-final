@@ -22,6 +22,9 @@
 					<%= patient.last_name %>,
 					<%= patient.first_name %>
 				</p>
+				<ul class="keyword-list noPad">
+					<%- patient.key_phrase %>
+				</ul>
 			</div>
 			<div class="two">
 				<form class="analyze-form" method="POST" action="/patient/<%= patient.id %>/analyze">

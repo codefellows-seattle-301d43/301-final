@@ -182,8 +182,10 @@ ul li a:hover {
 }
 
 .keyword:nth-child(-n+5) {
-  background-color: rgb(49, 224, 49);
+  background-color: rgb(24, 197, 24);
+  border: 1px solid rgb(115, 233, 115);
   transform: scale(1.1);
+  color: #eeeeee;
   width: max-content;
   margin: 8px;
 }
@@ -276,4 +278,8 @@ ul li a:hover {
 
 .aaron {
   background-image: url('../assets/aaron.jpg');
+}
+
+.noPad {
+  padding: 0px;
 }

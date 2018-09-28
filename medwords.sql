@@ -3,7 +3,8 @@ DROP TABLE IF EXISTS patients, records;
 CREATE TABLE IF NOT EXISTS patients (
   id SERIAL PRIMARY KEY,
   first_name VARCHAR(255) NOT NULL,
-  last_name VARCHAR(255) NOT NULL
+  last_name VARCHAR(255) NOT NULL,
+  key_phrase VARCHAR(255)
 );
 
 CREATE TABLE IF NOT EXISTS records (
