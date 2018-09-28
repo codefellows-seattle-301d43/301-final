@@ -109,6 +109,7 @@ const analyzeRecord = (req, res) => {
           .then(apiResponse => {
             let phraseList = JSON.parse(apiResponse.text).documents;
 
+            //Concat the result arrays together
             let allPhrasesFromRecords = phraseList.reduce((total,phraseList) => total.concat(phraseList.keyPhrases),[]);
             let allPhrasesSet = new Set(allPhrasesFromRecords);
 
@@ -128,14 +129,23 @@ const analyzeRecord = (req, res) => {
               return {name: phrase, total: count};
             }).sort((a,b) => b.total - a.total).filter(item => !filterList.includes(item.name));
 
-            let phraseTagList = mostFrequentPhrases.slice(0,5).map(phrase => `<li class="keyword">${phrase.name}</li>` );
-
-            console.log(phraseTagList);
+            //Take the first 5 items in sorted list, then format to prepare for db storage
+            let phraseTagList = mostFrequentPhrases.slice(0,5).map(phrase => `<li class="keyword">${phrase.name}</li>` ).join('\n');
 
             //Format for easier rendering on keyPhrase page.
             let formattedPhraseList = mostFrequentPhrases.map(word => `${word.name}`);
 
-            res.render('pages/keyPhrases', {phrases: formattedPhraseList, patient_id: req.params.patientId});
+            //Query to update patient's keyphrases
+            SQL = 'UPDATE patients SET key_phrase = $1 WHERE id = $2;';
+            values = [phraseTagList, req.params.patientId];
+
+            client.query(SQL, values, (err, serverRes) => {
+              if (err) {
+                res.render('pages/error', {message: err});
+              } else {
+                res.render('pages/keyPhrases', {phrases: formattedPhraseList, patient_id: req.params.patientId});
+              }
+            });
           });
       }
     }
