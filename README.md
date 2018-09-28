@@ -29,7 +29,7 @@ Development: Create a Node instance and clone the repo.
 As a User: Navigate to (http://medwords.info/), select a patient or create a new patient, create or view a patient's records, send those records off for key phrase analysis and view the key phrases.
 
 >### Database Schema
-![image info](./img/schema.png)
+![image info](./img/schema2.png)
 
 >### Site Endpoints
 * **GET /** - This route redirects the user to the '/patient' main page
