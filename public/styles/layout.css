@@ -144,6 +144,10 @@ input #patient-id {
   .menu-toggle {
     display: block;
   }
+
+  .menu-toggle-two {
+    display: none;
+  }
   
   header nav {
     position: absolute;
