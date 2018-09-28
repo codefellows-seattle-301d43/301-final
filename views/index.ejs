@@ -3,7 +3,7 @@
 <%- include('partials/head', {title: 'Med Words'}); %>
 
 <body>
-  <%- include('partials/header'); %>
+  <%- include('partials/header', {location: 'home'}); %>
   <% if (deleted) { %>
     <p>Patient successfully deleted!</p>
   <% } %>

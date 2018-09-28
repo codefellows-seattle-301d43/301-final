@@ -15,9 +15,5 @@ $(document).ready(() => {
     $('.menu-toggle-one').show();
   });
 
-  $('ul li').click(function(){
-    $(this).siblings().removeClass('active');
-    $(this).toggleClass('active');
-  });
 });
 
