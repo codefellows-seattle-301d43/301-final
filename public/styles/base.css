@@ -5,7 +5,6 @@ body {
   min-height: 100vh;
   flex-direction: column;
   justify-content: space-between;
-  /* background-color: #f1f1f1; */
   background-color: #bbbbbb;
   font-family: 'Roboto', sans-serif;
 }
