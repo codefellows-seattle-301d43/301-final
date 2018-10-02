@@ -4,77 +4,79 @@
 
 <body>
 	<%- include('../partials/header', {location: 'patient'}); %>
-
+  <!-- Can a patient be both added and deleted? I might make this an "else if" instead. -->
 	<% if (added) { %>
-	<p>Patient successfully added!</p>
-
+		<!-- indentation is off -->
+		<p>Patient successfully added!</p>
 	<% } %>
 	<% if (deleted) { %>
-	<p>Record successfully deleted!</p>
+		<p>Record successfully deleted!</p>
 	<% } %>
-<main class="p-main">
-	
-	<div class="patient-container">
-		<div class="patient-detail-container">
-			<div class="one">
-				<h2>Patient Name:</h2>
-				<p>
-					<%= patient.last_name %>,
-					<%= patient.first_name %>
+	<!-- indentation is off -->
+	<main class="p-main">
+		<div class="patient-container">
+			<div class="patient-detail-container">
+			  <!-- these class names are pretty un-descriptive. -->
+				<div class="one">
+					<h2>Patient Name:</h2>
+					<p>
+						<%= patient.last_name %>,
+						<%= patient.first_name %>
+					</p>
+					<ul class="keyword-list noPad">
+						<%- patient.key_phrase %>
+					</ul>
+				</div>
+				<div class="two">
+					<form class="analyze-form" method="POST" action="/patient/<%= patient.id %>/analyze">
+						<input type="hidden" name="lastName" value="<%= patient.last_name %>">
+						<input type="hidden" name="firstName" value="<%= patient.first_name %>">
+						<button class="submit">Analyze Keywords</button>
+					</form>
+				</div>
+			</div>
+			
+			<h2 class="center">Add A New Patient Record</h2>
+			<div class="new-record-container">
+				<div class="one one-form">
+					<form class="" method="POST" action="/record">
+					  <!-- You're using placeholders instead of labels. NEVER do this. https://joshuawinn.com/ux-input-placeholders-are-not-labels/ -->
+						<input class="input" type="hidden" name="patient_id" value="<%= patient.id %>">
+						<input class="input record-title"	 type="text" placeholder="Record Title" name="title" required>
+						<textarea id="textarea" class="input"placeholder="Description" name="description" required></textarea>
+						<button class="submit submit-center">Submit</button>
+					</form>
+				</div>
+			</div>
+
+			<h2 class="center">Patient's Records</h2>
+			<div class="patient-records-cotainer">
+				<p class="search-patient-label">
+					<span>DATE</span>
+					<span>TITLE</span>
 				</p>
-				<ul class="keyword-list noPad">
-					<%- patient.key_phrase %>
+				<ul id="patient-list">
+					<% records.forEach( record => {  %>
+						<li>
+							<a href="/record/<%= patient.id %>/<%= record.id %>">
+								<p class="search-patient-label">
+									<span>
+										<%= record.date %></span>
+									<span>
+										<%= record.title %></span>
+								</p>
+							</a>
+						</li>
+					<% }) %>
 				</ul>
 			</div>
-			<div class="two">
-				<form class="analyze-form" method="POST" action="/patient/<%= patient.id %>/analyze">
-					<input type="hidden" name="lastName" value="<%= patient.last_name %>">
-					<input type="hidden" name="firstName" value="<%= patient.first_name %>">
-					<button class="submit">Analyze Keywords</button>
-				</form>
-			</div>
-		</div>
-		
-		<h2 class="center">Add A New Patient Record</h2>
-		<div class="new-record-container">
-			<div class="one one-form">
-				<form class="" method="POST" action="/record">
-					<input class="input" type="hidden" name="patient_id" value="<%= patient.id %>">
-					<input class="input record-title"	 type="text" placeholder="Record Title" name="title" required>
-					<textarea id="textarea" class="input"placeholder="Description" name="description" required></textarea>
-					<button class="submit submit-center">Submit</button>
-				</form>
-			</div>
-		</div>
 
-		<h2 class="center">Patient's Records</h2>
-		<div class="patient-records-cotainer">
-			<p class="search-patient-label">
-				<span>DATE</span>
-				<span>TITLE</span>
-			</p>
-			<ul id="patient-list">
-				<% records.forEach( record => {  %>
-				<li>
-					<a href="/record/<%= patient.id %>/<%= record.id %>">
-						<p class="search-patient-label">
-							<span>
-								<%= record.date %></span>
-							<span>
-								<%= record.title %></span>
-						</p>
-					</a>
-				</li>
-				<% }) %>
-			</ul>
+			<form id="delete" action="/patient/<%= patient.id %>" method="POST">
+				<input type="hidden" name="_method" value="DELETE">
+				<button class="submit submit-center">Delete Patient</button>
+			</form>
 		</div>
-
-		<form id="delete" action="/patient/<%= patient.id %>" method="POST">
-			<input type="hidden" name="_method" value="DELETE">
-			<button class="submit submit-center">Delete Patient</button>
-		</form>
-	</div>
-</main>
+	</main>
 	<script src="/scripts/delete.js"></script>
 	<%- include('../partials/footer'); %>
 </body>

@@ -3,7 +3,7 @@
 const records = require('./records');
 const express = require('express');
 const methodOverride = require('method-override');
-const ejs = require('ejs');
+const ejs = require('ejs'); // eslint-disable-line
 
 const PORT = process.env.PORT;
 const app = express();
@@ -12,7 +12,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
-app.use(methodOverride(function (req, res) {
+app.use(methodOverride(function (req) {
   if (req.body && typeof req.body === 'object' && '_method' in req.body) {
     var method = req.body._method;
     delete req.body._method;
@@ -28,6 +28,7 @@ app.set('view engine', 'ejs');
 
 //Index
 app.get('/', records.getIndex);
+// You use singular nouns instead of plural in all your routes; convention is plural.
 app.get('/patient', records.getPatients);
 
 //About us
@@ -37,6 +38,7 @@ app.get('/about', records.getAbout);
 app.get('/patient/:patientId', records.patientInfo);
 
 //Get single record info
+// The normal nested structure for this would be /patients/:patientId/records/:recordId
 app.get('/record/:patientId/:recordId', records.recordInfo);
 
 
@@ -69,6 +71,9 @@ app.delete('/record/:recordId', records.deleteRecord);
 // ******************************** 404 CATCHER ************************************
 // =================================================================================
 
+// not so temp after all?
+// I have a personal policy to never mark anything as "temporary" in a comment,
+// because it usually turns me into a liar.
 //Simple temp 404 catcher
 app.get('*', (req, res) => {
   res.statusCode = 404;

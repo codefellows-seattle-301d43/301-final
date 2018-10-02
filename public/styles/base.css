@@ -9,6 +9,7 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
+/* This causes weird behavior. You shouldn't need to set the height this way. */
 html, body {
   height: 100%;
 }

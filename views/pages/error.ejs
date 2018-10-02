@@ -7,7 +7,8 @@
     <p><%= message %></p>     
     <button id="back">Back</button> 
   </main>
-  <script src="../scripts/error.js"></script>
+  <!-- use absolute paths for scripts! what if this gets rendered at the root?-->
+  <script src="/scripts/error.js"></script>
   <%- include('../partials/footer'); %>
 </body>
 </html>

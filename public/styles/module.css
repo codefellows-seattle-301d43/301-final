@@ -152,9 +152,15 @@ i.watermellon {
 }
 
 .search-patient-label {
+  /* Making this space-around gives you that weird, non-tabular appearance depending on the length of patients' names. */
+  /* Here's my quick approach to fixing it.*/
   display: flex;
   width: 100%;
-  justify-content: space-around;
+}
+.search-patient-label span {
+  padding: 0 5px;
+  flex: 1;
+  text-align: left;
 }
 
 ul li a:hover {

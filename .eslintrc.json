@@ -1,4 +1,5 @@
 {
+  /* It looks like this contains an awful lot of stuff from the blog app that's irrelevant to you... */
   "globals": {
     "app": true,
     "page": true,
